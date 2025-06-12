@@ -117,3 +117,14 @@ footer {
   border-radius: 6px;
   cursor: pointer;
 }
+
+
+.item-box {
+  flex-direction: row;
+  text-align: left;
+}
+
+.item-info h3,
+.item-info p {
+  text-align: left;
+}
