@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolota Burger</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    let cart = [];
+
+    function addToCart(itemName, price) {
+      const existing = cart.find(item => item.name === itemName);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name: itemName, price: price, qty: 1 });
+      }
+      updateCart();
+    }
+
+    function removeFromCart(itemName) {
+      const existing = cart.find(item => item.name === itemName);
+      if (existing && existing.qty > 1) {
+        existing.qty--;
+      } else {
+        cart = cart.filter(item => item.name !== itemName);
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartContainer = document.getElementById('cart');
+      cartContainer.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        cartContainer.innerHTML += `
+          <div>
+            <strong>${item.name}</strong> - R$ ${item.price.toFixed(2)} x ${item.qty}
+            <button onclick="addToCart('${item.name}', ${item.price})">+</button>
+            <button onclick="removeFromCart('${item.name}')">-</button>
+          </div>
+        `;
+      });
+      document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
+    }
+
+    function sendOrder() {
+      const endereco = document.getElementById('endereco').value.trim();
+      if (!endereco) {
+        alert('Por favor, informe seu endereço!');
+        return;
+      }
+      if (cart.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+      let message = 'Olá, quero fazer um pedido:\n';
+      cart.forEach(item => {
+        message += `- ${item.qty}x ${item.name} (R$ ${item.price.toFixed(2)})\n`;
+      });
+      let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      message += `Total: R$ ${total.toFixed(2)}\n`;
+      message += `Endereço: ${endereco}`;
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/5594992843309?text=${encoded}`, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="assets/logo.png" alt="Bolota Burger Logo" class="logo" />
+      <a href="https://bolotaburger.anota.ai" target="_blank" class="order-button">Fazer Pedido</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Bem-vindo ao Bolota Burger</h1>
+      <p>O sabor mais casca grossa de Marabá!</p>
+    </div>
+  </section>
+
+  <section class="cart-section">
+    <div class="container">
+      <h2>Monte seu Pedido</h2>
+    <div class="menu-boxes">
+      <div class="item-box">
+        <div class="item-info">
+          <h3>Combo Bolota Fun Bacon</h3>
+          <p>1 hambúrguer, queijo, alface, tomate, bacon, maionese grill.</p>
+          <p class="price">R$ 23,00</p>
+          <button onclick="addToCart('Combo Bolota Fun Bacon', 23.00)">Adicionar</button>
+        </div>
+        <img src="assets/burger1.jpg" alt="Bolota Fun Bacon">
+      </div>
+
+      <div class="item-box">
+        <div class="item-info">
+          <h3>Combo Cheddar Fun Bacon</h3>
+          <p>1 hambúrguer, cheddar cremoso, bacon, alface, tomate, maionese grill.</p>
+          <p class="price">R$ 23,00</p>
+          <button onclick="addToCart('Combo Cheddar Fun Bacon', 23.00)">Adicionar</button>
+        </div>
+        <img src="assets/burger2.jpg" alt="Cheddar Fun Bacon">
+      </div>
+
+      <div class="item-box">
+        <div class="item-info">
+          <h3>Duplo Cream Chesse Combo</h3>
+          <p>2 carnes, bacon crispy, cream chesse, molho chipotle e pão brioche.</p>
+          <p class="price">R$ 25,00</p>
+          <button onclick="addToCart('Duplo Cream Chesse Combo', 25.00)">Adicionar</button>
+        </div>
+        <img src="assets/burger3.jpg" alt="Duplo Cream Chesse">
+      </div>
+    </div>
+      <button onclick="addToCart('Cheeseburger', 18.00)">Adicionar Cheeseburger</button>
+      <button onclick="addToCart('X-Bacon', 22.00)">Adicionar X-Bacon</button>
+      <button onclick="addToCart('Batata Frita', 10.00)">Adicionar Batata Frita</button>
+
+      <div id="cart" style="margin-top:20px;"></div>
+      <p id="total" style="font-weight:bold;"></p>
+
+      <input type="text" id="endereco" placeholder="Digite seu endereço" style="width:100%; padding:10px; margin-top:10px;" />
+      <button onclick="sendOrder()" style="margin-top:10px; padding:10px 20px; background:#25D366; color:white; border:none; border-radius:5px;">Finalizar Pedido no WhatsApp</button>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h2>Quem Somos</h2>
+      <p>
+        O Bolota Burger nasceu da paixão por hambúrguer artesanal de qualidade, feito com ingredientes selecionados e muito carinho.
+        Estamos localizados no coração de Marabá, prontos para atender com agilidade, sabor e aquele precinho camarada!
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Bolota Burger - Criado por Seu Nome</p>
+    </div>
+  </footer>
+</body>
+</html>
