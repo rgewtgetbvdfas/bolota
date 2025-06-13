@@ -1,147 +1,403 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolota Burger</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script>
-    let cart = [];
-
-    function addToCart(itemName, price) {
-      const existing = cart.find(item => item.name === itemName);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ name: itemName, price: price, qty: 1 });
-      }
-      updateCart();
-    }
-
-    function removeFromCart(itemName) {
-      const existing = cart.find(item => item.name === itemName);
-      if (existing && existing.qty > 1) {
-        existing.qty--;
-      } else {
-        cart = cart.filter(item => item.name !== itemName);
-      }
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartContainer = document.getElementById('cart');
-      cartContainer.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price * item.qty;
-        cartContainer.innerHTML += `
-          <div>
-            <strong>${item.name}</strong> - R$ ${item.price.toFixed(2)} x ${item.qty}
-            <button onclick="addToCart('${item.name}', ${item.price})">+</button>
-            <button onclick="removeFromCart('${item.name}')">-</button>
-          </div>
-        `;
-      });
-      document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
-    }
-
-    function sendOrder() {
-      const endereco = document.getElementById('endereco').value.trim();
-      if (!endereco) {
-        alert('Por favor, informe seu endereço!');
-        return;
-      }
-      if (cart.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-      }
-      let message = 'Olá, quero fazer um pedido:\n';
-      cart.forEach(item => {
-        message += `- ${item.qty}x ${item.name} (R$ ${item.price.toFixed(2)})\n`;
-      });
-      let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-      message += `Total: R$ ${total.toFixed(2)}\n`;
-      message += `Endereço: ${endereco}`;
-      const encoded = encodeURIComponent(message);
-      window.open(`https://wa.me/5594992843309?text=${encoded}`, '_blank');
-    }
-  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bolota Burger</title>
+<link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <img src="assets/logo.png" alt="Bolota Burger Logo" class="logo" />
-      <a href="https://bolotaburger.anota.ai" target="_blank" class="order-button">Fazer Pedido</a>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Bem-vindo ao Bolota Burger</h1>
-      <p>O sabor mais casca grossa de Marabá!</p>
+    <header class="bolota-topbar">
+  <div class="bolota-container">
+    <div class="logo-section">
+      <img src="./img/logo (2).png" alt="Bolota Burger" class="logo" />
+      <span class="title">BOLOTA BURGER</span>
     </div>
-  </section>
+    <div class="icons">
+      <img src="./img/lupa.png" alt="Buscar" />
+      <img src="./img/logoo.png" alt="Compartilhar" />
+    </div>
+  </div>
+  <div class="bolota-info">
+    <span>Aberto até 23h</span>
+    <span class="dot">•</span>
+    <span>Pedido mín. R$ 5,00</span>
+    <a href="./perfil.html" class="perfil-loja">Perfil da loja</a>
+  </div>
+</header>
 
-  <section class="cart-section">
-    <div class="container">
-      <h2>Monte seu Pedido</h2>
-    <div class="menu-boxes">
-      <div class="item-box">
-        <div class="item-info">
-          <h3>Combo Bolota Fun Bacon</h3>
-          <p>1 hambúrguer, queijo, alface, tomate, bacon, maionese grill.</p>
-          <p class="price">R$ 23,00</p>
-          <button onclick="addToCart('Combo Bolota Fun Bacon', 23.00)">Adicionar</button>
-        </div>
-        <img src="assets/burger1.jpg" alt="Bolota Fun Bacon">
+<div class="abas">
+  <a href="#combo">COMBO = BURGER + FRITAS + BEBIDAS</a>
+  <a href="#hamburguer">HAMBURGUER</a>
+  <a href="#fritas">FRITA´S</a>
+  <a href="#bebidas">BEBIDAS</a>
+  <a href="#promocoes">PROMOÇÕES</a>
+  <a href="#adicionais">ADICIONAIS</a>
+</div>
+
+<h2 class="essa">Combo = Burger + Fritas + Bebidas</h2>
+</section>
+<section class="item-list" id="combo">
+<a href="produtos/combo_fun_bacon.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Combo Bolota Fun Bacon</h3>
+<p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
+<span class="price">R$ 23,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/fun_bacon.jpg"/></div>
+</div>
+</a>
+<a href="produtos/combo_cheddar_fun.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Combo Cheddar Fun Bacon</h3>
+<p>1 hambúrguer, cheddar cremoso, bacon, alface e tomate, maionese grill.</p>
+<span class="price">R$ 23,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/cheddar_fun.jpg"/></div>
+</div>
+</a>
+<a href="produtos/combo_chesse_fun.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Combo Chesse Fun Bacon</h3>
+<p>1 hambúrguer, cream cheese, bacon, alface e tomate e maionese grill.</p>
+<span class="price">R$ 23,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/chesse_fun.jpg"/></div>
+</div>
+</a>
+<a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Duplo Cream Chesse combo</h3>
+<p>2 carnes, bacon crispy, cream chesse, molho chipotle e pão brioche.</p>
+<span class="price">R$ 25,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/duplo_cream.jpg"/></div>
+</div>
+</a>
+<a href="produtos/cheddar_bacon_duplo.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Cheddar bacon duplo combo</h3>
+<p>O hambúrguer duplo mais vendido da casa, com 2 blends de 100g cada cobertos por cream cheddar e fatias de bacon defumado e maionese especial.</p>
+<span class="price">R$ 25,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/cheddar_duplo.jpg"/></div>
+</div>
+</a>
+<a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Duplo Bacon Combo</h3>
+<p>Burger Duplo: apenas 2 blend de 100g queijo, fatias de bacon maionese especial e maionese grill.</p>
+<span class="price">R$ 25,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/duplo_bacon.jpg"/></div>
+</div>
+</a>
+</section><section class="item-list" id="hamburguer">
+<h2>HAMBURGER</h2>
+<a href="produtos/cheddar_duplo_bacon.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Cheddar Duplo Bacon</h3>
+<p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+<span class="price">R$ 20,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/cheddar_duplo_bacon.jpg"/></div>
+</div>
+</a>
+<a href="produtos/duplo_bacon.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Duplo Bacon</h3>
+<p>2 CARNES, BACON CRISPY, QUEIJO, MOLHO CHIPOTLE E PÃO BRIOCHE</p>
+<span class="price">R$ 20,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/duplo_bacon.jpg"/></div>
+</div>
+</a>
+<a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Duplo Cream Chesse</h3>
+<p>2 CARENES, BACON CRISPY, CREAM CHESSE, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+<span class="price">R$ 20,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/duplo_cream_chesse.jpg"/></div>
+</div>
+</a>
+<a href="produtos/triplo_bacon.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Triplo Bacon</h3>
+<p>3 CARNES, BACON CRISPY, MOOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+<span class="price">R$ 23,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/triplo_bacon.jpg"/></div>
+</div>
+</a>
+<a href="produtos/classico_especial.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Classico Especial</h3>
+<p>1 hambúrguer, ovo, queijo, alface e tomate, maionese grill.</p>
+<span class="price">R$ 15,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/classico_especial.jpg"/></div>
+</div>
+</a>
+<a href="produtos/original.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Original</h3>
+<p>1 CARNE, QUEIJO, OVO, CALABRESA, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+<span class="price">R$ 16,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/original.jpg"/></div>
+</div>
+</a>
+</section><section class="item-list" id="fritas">
+<h2>FRITA´S</h2>
+<a href="produtos/fritas_bacon_cheddar.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Fritas Bacon Cheddar</h3>
+<p>BATATA, CHEDDAR CREMOSO, BACON CRISPY. porção serve até 3 pessoas</p>
+<span class="price">R$ 25,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/fritas_bacon_cheddar.jpg"/></div>
+</div>
+</a>
+<a href="produtos/fritas_bacon_chesse.html" style="text-decoration: none;">
+<div class="item">
+<div class="item-info">
+<h3>Fritas Bacon Chesse</h3>
+<p>BATATA, CREAM CHESSE, BACON CRISPY. serve até 3 pessoas.</p>
+<span class="price">R$ 25,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/fritas_bacon_chesse.jpg"/></div>
+</div>
+</a>
+<a href="produtos/fritas_tradicional.html" style="text-decoration: none;"> 
+<div class="item">
+<div class="item-info">
+<h3>Fritas Tradicional</h3>
+<p>BATATA FRITA.</p>
+<span class="price">R$ 15,00</span>
+</div>
+<div class="item-img"><img alt="" src="assets/fritas_tradicional.jpg"/></div>
+</div>
+</a>
+</section>
+<section class="item-list" id="bebidas">
+  <h2>BEBIDAS</h2>
+
+  <a href="produtos/refri_lata_guarana.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Refri Lata Guaraná</h3>
+        <p>Guaraná Antarctica em lata</p>
+        <span class="price">R$ 4,00</span>
       </div>
+      <div class="item-img"><img src="assets/bebida_guarana_lata.jpg" alt="Guaraná lata"></div>
+    </div>
+  </a>
 
-      <div class="item-box">
-        <div class="item-info">
-          <h3>Combo Cheddar Fun Bacon</h3>
-          <p>1 hambúrguer, cheddar cremoso, bacon, alface, tomate, maionese grill.</p>
-          <p class="price">R$ 23,00</p>
-          <button onclick="addToCart('Combo Cheddar Fun Bacon', 23.00)">Adicionar</button>
-        </div>
-        <img src="assets/burger2.jpg" alt="Cheddar Fun Bacon">
+  <a href="produtos/agua.html">
+    <div class="item">
+      <div class="item-info">
+        <h3>Água</h3>
+        <p>Água mineral sem gás</p>
+        <span class="price">R$ 3,00</span>
       </div>
+      <div class="item-img"><img src="assets/agua.png" alt="Água"></div>
+    </div>
+  </a>
 
-      <div class="item-box">
-        <div class="item-info">
-          <h3>Duplo Cream Chesse Combo</h3>
-          <p>2 carnes, bacon crispy, cream chesse, molho chipotle e pão brioche.</p>
-          <p class="price">R$ 25,00</p>
-          <button onclick="addToCart('Duplo Cream Chesse Combo', 25.00)">Adicionar</button>
-        </div>
-        <img src="assets/burger3.jpg" alt="Duplo Cream Chesse">
+  <a href="produtos/suco_goiaba.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Suco Goiaba</h3>
+        <p>Suco natural de goiaba</p>
+        <span class="price">R$ 5,00</span>
+      </div>
+      <div class="item-img"><img src="assets/suco_goiaba.jpg" alt="Suco Goiaba"></div>
+    </div>
+  </a>
+
+  <a href="produtos/refri_1l_guarana.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Refri 1L Guaraná</h3>
+        <p>Guaraná Antarctica 1 Litro</p>
+        <span class="price">R$ 7,00</span>
+      </div>
+      <div class="item-img"><img src="assets/guarana_1l.jpg" alt="Guaraná 1L"></div>
+    </div>
+  </a>
+
+  <a href="produtos/refri_1_5l_coca.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Refri 1,5L Coca-Cola</h3>
+        <p>Refrigerante Coca-Cola 1,5 Litro</p>
+        <span class="price">R$ 10,00</span>
+      </div>
+      <div class="item-img"><img src="assets/coca_1_5l.jpg" alt="Coca 1,5L"></div>
+    </div>
+  </a>
+
+  <a href="produtos/refri_retornavel.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Refri Coca 1L Retornável</h3>
+        <p>Coca-Cola retornável</p>
+        <span class="price">R$ 8,00</span>
+      </div>
+      <div class="item-img"><img src="assets/coca_retornavel.jpg" alt="Coca Retornável"></div>
+    </div>
+  </a>
+</section>
+
+<section class="item-list" id="promocoes">
+  <h2>PROMOÇÕES <span style="color: red;">%</span></h2>
+
+  <a href="produtos/promocao_3x_classicos.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>3x Clássicos Combos</h3>
+        <p>3 Combos clássicos com hambúrgueres incríveis.</p>
+        <span class="price">R$ 50,00</span>
+      </div>
+      <div class="item-img"><img src="assets/promocao_classicos.jpg" alt="3x Clássicos"></div>
+    </div>
+  </a>
+
+  <a href="produtos/promocao_fun_cheddar.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>2 Hambúrgueres Fun Bacon e Cheddar Bacon + Coca 600ml</h3>
+        <p>1 Fun Bacon e 1 Cheddar Bacon com Coca 600ml.</p>
+        <span class="price">R$ 30,00</span>
+      </div>
+      <div class="item-img"><img src="assets/promocao_fun_cheddar.jpg" alt="Fun + Cheddar + Coca"></div>
+    </div>
+  </a>
+
+  <a href="produtos/promocao_big_combo.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Big Combo Oferta</h3>
+        <p>1 Fun Bacon + 1 Cheddar Bacon + Fritas Tradicional + Coca.</p>
+        <span class="price">R$ 49,90</span>
+      </div>
+      <div class="item-img"><img src="assets/promocao_big_combo.jpg" alt="Big Combo"></div>
+    </div>
+  </a>
+
+  <a href="produtos/promocao_3x_fun.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>3 Combos Fun Bacon</h3>
+        <p>3 Hambúrgueres, 3 Fritas pequenas, 3 Refrigerantes.</p>
+        <span class="price">R$ 59,90</span>
+      </div>
+      <div class="item-img"><img src="assets/promocao_3x_fun.jpg" alt="3 Combos Fun"></div>
+    </div>
+  </a>
+
+  <a href="produtos/promocao_dia_dos_namorados.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Par Perfeito - 2x Combos Fun Bacon</h3>
+        <p>Especial Dia dos Namorados: 2 Hambúrgueres, 2 Fritas, 2 Refri.</p>
+        <span class="price">R$ 40,00</span>
+      </div>
+      <div class="item-img"><img src="assets/promocao_dia_namorados.jpg" alt="Par Perfeito"></div>
+    </div>
+  </a>
+</section>
+
+<section class="item-list" id="adicionais">
+  <h2>ADICIONAIS</h2>
+
+  <a href="produtos/adicional_carne_hamburguer.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Carne Hamburguer.</h3>
+        <span class="price">R$ 5,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicionais_carne.jpg" alt="Carne Hamburguer">
       </div>
     </div>
-      <button onclick="addToCart('Cheeseburger', 18.00)">Adicionar Cheeseburger</button>
-      <button onclick="addToCart('X-Bacon', 22.00)">Adicionar X-Bacon</button>
-      <button onclick="addToCart('Batata Frita', 10.00)">Adicionar Batata Frita</button>
+  </a>
 
-      <div id="cart" style="margin-top:20px;"></div>
-      <p id="total" style="font-weight:bold;"></p>
-
-      <input type="text" id="endereco" placeholder="Digite seu endereço" style="width:100%; padding:10px; margin-top:10px;" />
-      <button onclick="sendOrder()" style="margin-top:10px; padding:10px 20px; background:#25D366; color:white; border:none; border-radius:5px;">Finalizar Pedido no WhatsApp</button>
+  <a href="produtos/adicional_bacon_crispy.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Bacon Crispy</h3>
+        <span class="price">R$ 5,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicional_bacon.jpg" alt="Bacon Crispy">
+      </div>
     </div>
-  </section>
+  </a>
 
-  <section class="about">
-    <div class="container">
-      <h2>Quem Somos</h2>
-      <p>
-        O Bolota Burger nasceu da paixão por hambúrguer artesanal de qualidade, feito com ingredientes selecionados e muito carinho.
-        Estamos localizados no coração de Marabá, prontos para atender com agilidade, sabor e aquele precinho camarada!
-      </p>
+  <a href="produtos/adicional_ovo.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Ovo</h3>
+        <span class="price">R$ 3,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicional_ovo.jpg" alt="Ovo">
+      </div>
     </div>
-  </section>
+  </a>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Bolota Burger - Criado por Seu Nome</p>
+  <a href="produtos/adicional_calabresa.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Calabresa</h3>
+        <span class="price">R$ 5,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicional_calabresa.jpg" alt="Calabresa">
+      </div>
     </div>
-  </footer>
+  </a>
+
+  <a href="produtos/adicional_frango.html" style="text-decoration: none;"> 
+    <div class="item">
+      <div class="item-info">
+        <h3>Frango Empanado</h3>
+        <span class="price">R$ 5,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicional_frango.jpg" alt="Frango Empanado">
+      </div>
+    </div>
+  </a>
+
+  <a href="produtos/adicional_queijo.html" style="text-decoration: none;">
+    <div class="item">
+      <div class="item-info">
+        <h3>Queijo Fatia</h3>
+        <span class="price">R$ 3,00</span>
+      </div>
+      <div class="item-img">
+        <img src="assets/adicional_queijo.jpg" alt="Queijo Fatia">
+      </div>
+    </div>
+  </a>
+</section>
 </body>
 </html>
