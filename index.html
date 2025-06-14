@@ -6,6 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Bolota Burger</title>
 <link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
 .abas a.active {
@@ -51,6 +52,93 @@
   <a href="#promocoes">PROMOÇÕES</a>
   <a href="#adicionais">ADICIONAIS</a>
 </div>
+
+<div class="carrossel-container">
+  <h2>Os mais pedidos</h2>
+  <div class="carrossel">
+    <div class="card-produto">
+      <img src="./img/img1/han6.png" alt="Cheddar Duplo">
+      <span>Cheddar Duplo<br> combo<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img2/hanbu1.png" alt="Cheddar Duplo Bacon">
+      <span>Cheddar Duplo Bacon<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img3/frita1.png" alt="Cheddar Fun">
+      <span>Cheddar Fun<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img4/re1.png" alt="Chesse Fun">
+      <span>Chesse Fun<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img4/re2.png" alt="Clássico Especial">
+      <span>Clássico Especial<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img3/frita3.png" alt="Duplo Bacon">
+      <span>Duplo Bacon<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img5/promo5.png" alt="Duplo Cream">
+      <span>Duplo Cream<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img1/han6.png" alt="Duplo Cream Chesse">
+      <span>Duplo Cream Chesse<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img3/frita2.png" alt="Fritas Bacon Cheddar">
+      <span>Fritas Bacon Cheddar<br>R$ 20,00</span>
+    </div>
+    <div class="card-produto">
+      <img src="./img/img6/ad4.png" alt="Fritas Bacon Chesse">
+      <span>Fritas Bacon Chesse<br>R$ 20,00</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.carrossel-container {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 10px;
+}
+.carrossel-container h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.carrossel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+.carrossel::-webkit-scrollbar {
+  display: none;
+}
+.card-produto {
+  flex: 0 0 auto;
+  width: 130px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 5px;
+  text-align: center;
+}
+.card-produto img {
+  width: 100%;
+  border-radius: 8px;
+}
+.card-produto span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+}
+</style>
 
 <h2 class="essa">Combo = Burger + Fritas + Bebidas</h2>
 </section>

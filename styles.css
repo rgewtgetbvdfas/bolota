@@ -147,6 +147,8 @@ body {
   background-color: #ececec;
   padding: 10px;
   gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .abas a {
@@ -349,3 +351,13 @@ html {
 #resultado a:hover {
   background-color: #f0f0f0;
 }
+
+.essa {
+  margin-left: 20px;
+  margin-bottom: 0;
+  font-size: 18px;
+  margin-top: 6px;
+  font-weight: 800;
+}
+
+
