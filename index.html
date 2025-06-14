@@ -450,15 +450,12 @@
   // Quando uma aba for clicada
   document.querySelectorAll('.abas a').forEach(link => {
     link.addEventListener('click', function (e) {
-      // Faz a aba clicada rolar para dentro da visão
       this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     });
   });
 </script>
 
-
 <script>
-
 window.addEventListener("DOMContentLoaded", () => {
   const lupa = document.querySelector(".icons img[alt='Buscar']");
   const searchBox = document.getElementById("searchBox");
@@ -467,37 +464,41 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const produtos = [
     { nome: "Água", arquivo: "produtos/agua.html" },
-  { nome: "Bebida Coca", arquivo: "produtos/bebida_coca.html" },
-  { nome: "Bebida Suco", arquivo: "produtos/bebida_suco.html" },
-  { nome: "Cheddar Bacon Duplo", arquivo: "produtos/cheddar_bacon_duplo.html" },
-  { nome: "Cheddar Duplo Bacon", arquivo: "produtos/cheddar_duplo_bacon.html" },
-  { nome: "Clássico Especial", arquivo: "produtos/classico_especial.html" },
-  { nome: "Combo Cheddar Fun", arquivo: "produtos/combo_cheddar_fun.html" },
-  { nome: "Combo Chesse Fun", arquivo: "produtos/combo_chesse_fun.html" },
-  { nome: "Combo Fun Bacon", arquivo: "produtos/combo_fun_bacon.html" },
-  { nome: "Duplo Bacon", arquivo: "produtos/duplo_bacon.html" },
-  { nome: "Duplo Bacon Combo", arquivo: "produtos/duplo_bacon_combo.html" },
-  { nome: "Duplo Cream Chesse", arquivo: "produtos/duplo_cream_chesse.html" },
-  { nome: "Fritas Bacon Cheddar", arquivo: "produtos/fritas_bacon_cheddar.html" },
-  { nome: "Fritas Bacon Chesse", arquivo: "produtos/fritas_bacon_chesse.html" },
-  { nome: "Fritas Tradicional", arquivo: "produtos/fritas_tradicional.html" },
-  { nome: "Original", arquivo: "produtos/original.html" },
-  { nome: "Refri 1L Coca-Cola", arquivo: "produtos/refri_1l_coca-cola.html" },
-  { nome: "Refri 1L Guaraná", arquivo: "produtos/refri_1l_guarana.html" },
-  { nome: "Refri 1L Retornável", arquivo: "produtos/refri_1l_retornavel.html" },
-  { nome: "Refri Lata Guaraná", arquivo: "produtos/refri_lata_guarana.html" },
-  { nome: "Suco Goiaba", arquivo: "produtos/suco_goiaba.html" },
-  { nome: "Triplo Bacon", arquivo: "produtos/triplo_bacon.html" }
+    { nome: "Bebida Coca", arquivo: "produtos/bebida_coca.html" },
+    { nome: "Bebida Suco", arquivo: "produtos/bebida_suco.html" },
+    { nome: "Cheddar Bacon Duplo", arquivo: "produtos/cheddar_bacon_duplo.html" },
+    { nome: "Cheddar Duplo Bacon", arquivo: "produtos/cheddar_duplo_bacon.html" },
+    { nome: "Clássico Especial", arquivo: "produtos/classico_especial.html" },
+    { nome: "Combo Cheddar Fun", arquivo: "produtos/combo_cheddar_fun.html" },
+    { nome: "Combo Chesse Fun", arquivo: "produtos/combo_chesse_fun.html" },
+    { nome: "Combo Fun Bacon", arquivo: "produtos/combo_fun_bacon.html" },
+    { nome: "Duplo Bacon", arquivo: "produtos/duplo_bacon.html" },
+    { nome: "Duplo Bacon Combo", arquivo: "produtos/duplo_bacon_combo.html" },
+    { nome: "Duplo Cream Chesse", arquivo: "produtos/duplo_cream_chesse.html" },
+    { nome: "Fritas Bacon Cheddar", arquivo: "produtos/fritas_bacon_cheddar.html" },
+    { nome: "Fritas Bacon Chesse", arquivo: "produtos/fritas_bacon_chesse.html" },
+    { nome: "Fritas Tradicional", arquivo: "produtos/fritas_tradicional.html" },
+    { nome: "Original", arquivo: "produtos/original.html" },
+    { nome: "Refri 1L Coca-Cola", arquivo: "produtos/refri_1l_coca-cola.html" },
+    { nome: "Refri 1L Guaraná", arquivo: "produtos/refri_1l_guarana.html" },
+    { nome: "Refri 1L Retornável", arquivo: "produtos/refri_1l_retornavel.html" },
+    { nome: "Refri Lata Guaraná", arquivo: "produtos/refri_lata_guarana.html" },
+    { nome: "Suco Goiaba", arquivo: "produtos/suco_goiaba.html" },
+    { nome: "Triplo Bacon", arquivo: "produtos/triplo_bacon.html" }
   ];
 
+  let aberto = false;
+
   lupa.addEventListener("click", () => {
-    searchBox.style.display = "block";
-    input.focus();
+    aberto = !aberto;
+    searchBox.style.display = aberto ? "block" : "none";
+    if (aberto) input.focus();
   });
 
   document.addEventListener("click", (e) => {
     if (!searchBox.contains(e.target) && e.target !== lupa) {
       searchBox.style.display = "none";
+      aberto = false;
     }
   });
 
