@@ -32,7 +32,7 @@
     </div>
     <div class="icons">
       <img src="./img/lupa.png" alt="Buscar" />
-      <img src="./img/logoo.png" alt="Compartilhar" />
+      <img src="./img/logoo.png" alt="Compartilhar" class="icon-share" id="compartilharicone" />
     </div>
   </div>
   <div class="bolota-info">
@@ -517,6 +517,25 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+  const botaoCompartilhar = document.getElementById("compartilharicone");
+
+  botaoCompartilhar.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Bolota Burger 🍔",
+          text: "Faça seu pedido agora no Bolota Burger!",
+          url: "https://rgewtgetbvdfas.github.io/bolota/"
+        });
+      } catch (erro) {
+        console.error("Erro ao compartilhar:", erro);
+      }
+    } else {
+      alert("Seu navegador não suporta compartilhamento automático.");
+    }
+  });
+</script>
     </body>
     
 </html>
