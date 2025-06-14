@@ -6,6 +6,13 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Bolota Burger</title>
 <link href="styles.css" rel="stylesheet"/>
+<style>
+
+.abas a.active {
+  color: red;
+  border-bottom: 2px solid red;
+}
+</style>
 </head>
 <body>
 
@@ -399,5 +406,46 @@
     </div>
   </a>
 </section>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  const links = document.querySelectorAll(".abas a");
+
+  window.addEventListener("scroll", () => {
+    let currentSection = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    links.forEach(link => {
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === "#" + currentSection) {
+        link.classList.add("active");
+
+        // 👇 Aqui é o que você queria: mover a aba horizontalmente
+        link.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest"
+        });
+      }
+    });
+  });
+</script>
+
+<script>
+  // Quando uma aba for clicada
+  document.querySelectorAll('.abas a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      // Faz a aba clicada rolar para dentro da visão
+      this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+  });
+</script>
 </body>
 </html>
