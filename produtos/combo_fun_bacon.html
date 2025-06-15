@@ -32,7 +32,7 @@
       left: 0;
       right: 0;
       height: 40px;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,20), transparent);
       z-index: 5;
     }
 
@@ -45,22 +45,26 @@
     }
 
     .seta-expandir {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 30px;
-      color: white;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-    }
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  transition: transform 0.3s ease;
+  font-size: 20px;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
 
+.seta-expandir.girada {
+  transform: translateX(-50%) rotate(180deg);
+}
     .produto-info {
       padding: 1rem;
     }
@@ -77,10 +81,12 @@
     }
 
     .observacoes {
-      background: #f1f1f1;
+      background: #d8d8d8;
+      backdrop-filter: blur(20px);
       padding: 1rem;
       margin: 1rem;
       border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     }
 
     .observacoes strong {
@@ -89,8 +95,8 @@
     }
 
     .observacoes textarea {
-      width: 100%;
-      padding: 0.5rem;
+      width: 98%;
+      padding: 0.2rem;
       border-radius: 6px;
       border: 1px solid #ccc;
     }
@@ -279,9 +285,12 @@
     }
 
     function expandirImagem() {
-      const header = document.getElementById("imagemHeader");
-      header.classList.toggle("expandir");
-    }
+  const header = document.getElementById("imagemHeader");
+  const seta = header.querySelector(".seta-expandir");
+
+  header.classList.toggle("expandir");
+  seta.classList.toggle("girada");
+}
 
     atualizarPreco();
   </script>
