@@ -3,26 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cheddar bacon duplo combo</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <title>Cheddar Duplo Bacon</title>
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fff;
+    }
+
     .produto-header img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
+
     .produto-info {
       padding: 1rem;
     }
+
     .produto-info h2 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.4rem;
+    }
+
+    .produto-info strong {
+      font-size: 1.1rem;
+      display: block;
       margin-bottom: 0.3rem;
     }
+
     .observacoes {
       background: #f1f1f1;
-      padding: 0.5rem;
+      padding: 1rem;
       margin: 1rem;
       border-radius: 6px;
     }
+
+    .observacoes strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .observacoes textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
     .quantidade {
       display: flex;
       justify-content: space-between;
@@ -35,45 +63,85 @@
       padding: 0.75rem 1rem;
       border-top: 1px solid #ccc;
     }
+
     .quantidade button {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       padding: 0.4rem 0.8rem;
       border: none;
       background: none;
-      color: #555;
+      color: #d60000;
+      font-weight: bold;
     }
+
     .btn-add {
-      background: red;
+      background: #d60000;
       color: white;
       border: none;
       padding: 0.6rem 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+
+    .btn-add .label {
+      font-weight: bold;
+    }
+
+    .btn-add .price {
       font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="produto-header">
-    <img src="../assets/cheddar_duplo.jpg" alt="Cheddar bacon duplo combo" />
+    <img src="../assets/cheddar_duplo_bacon.jpg" alt="Cheddar Duplo Bacon" />
   </div>
   <div class="produto-info">
-    <h2>Cheddar bacon duplo combo</h2>
-    <strong>R$ 25,00</strong>
-    <p>O hambúrguer duplo mais vendido da casa, com 2 blends de 100g cada cobertos por cream cheddar e fatias de bacon defumado e maionese especial.</p>
+    <h2>Cheddar Duplo Bacon</h2>
+    <strong>R$ 20,00</strong>
+    <p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
   </div>
 
   <div class="observacoes">
     <strong>Observações</strong><br/>
-    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
+    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc."></textarea>
   </div>
 
   <div class="quantidade">
     <div>
-      <button>-</button>
-      <span>1</span>
-      <button>+</button>
+      <button onclick="alterarQuantidade(-1)">-</button>
+      <span id="qtd">1</span>
+      <button onclick="alterarQuantidade(1)">+</button>
     </div>
-    <button class="btn-add">Adicionar<br/>R$ 25,00</button>
+    <button class="btn-add" id="btnAdicionar">
+      <span class="label">Adicionar</span>
+      <span class="price">R$ 20,00</span>
+    </button>
   </div>
+
+  <script>
+    let quantidade = 1;
+    const precoUnitario = 20.00;
+    const spanQtd = document.getElementById("qtd");
+    const btnAdicionar = document.getElementById("btnAdicionar");
+
+    function alterarQuantidade(valor) {
+      quantidade += valor;
+      if (quantidade < 1) quantidade = 1;
+      atualizarInterface();
+    }
+
+    function atualizarInterface() {
+      const total = (precoUnitario * quantidade).toFixed(2).replace(".", ",");
+      spanQtd.textContent = quantidade;
+      btnAdicionar.innerHTML = `
+        <span class="label">Adicionar</span>
+        <span class="price">R$ ${total}</span>
+      `;
+    }
+  </script>
 </body>
 </html>

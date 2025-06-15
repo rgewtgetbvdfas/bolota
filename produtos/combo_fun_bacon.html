@@ -3,26 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Combo Bolota Fun Bacon</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <title>Cheddar Duplo Bacon</title>
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fff;
+    }
+
     .produto-header img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
+
     .produto-info {
       padding: 1rem;
     }
+
     .produto-info h2 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.4rem;
+    }
+
+    .produto-info strong {
+      font-size: 1.1rem;
+      display: block;
       margin-bottom: 0.3rem;
     }
+
     .observacoes {
       background: #f1f1f1;
-      padding: 0.5rem;
+      padding: 1rem;
       margin: 1rem;
       border-radius: 6px;
     }
+
+    .observacoes strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .observacoes textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
     .quantidade {
       display: flex;
       justify-content: space-between;
@@ -35,45 +63,175 @@
       padding: 0.75rem 1rem;
       border-top: 1px solid #ccc;
     }
+
     .quantidade button {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       padding: 0.4rem 0.8rem;
       border: none;
       background: none;
-      color: #555;
+      color: #d00;
+      font-weight: bold;
     }
-    .btn-add {
-      background: red;
+
+    #btnAdicionar {
+      background: #c60000;
       color: white;
       border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #btnAdicionar span {
+      display: inline-block;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
+
+    .popup-content img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+    }
+
+    .popup-content h3 {
+      margin: 1rem 0;
+    }
+
+    .popup-content .botoes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .popup-content .botoes button {
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-secundario {
+      border: 2px solid #d00;
+      color: #d00;
+      background: white;
+    }
+
+    .btn-principal {
+      background: #d00;
+      color: white;
+      border: none;
     }
   </style>
 </head>
 <body>
+
   <div class="produto-header">
-    <img src="../assets/fun_bacon.jpg" alt="Combo Bolota Fun Bacon" />
+    <img src="../assets/cheddar_duplo_bacon.jpg" alt="Cheddar Duplo Bacon" />
   </div>
   <div class="produto-info">
-    <h2>Combo Bolota Fun Bacon</h2>
-    <strong>R$ 23,00</strong>
-    <p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
+    <h2>Cheddar Duplo Bacon</h2>
+    <strong>R$ 20,00</strong>
+    <p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
   </div>
 
   <div class="observacoes">
     <strong>Observações</strong><br/>
-    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
+    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc."></textarea>
   </div>
 
   <div class="quantidade">
     <div>
-      <button>-</button>
-      <span>1</span>
-      <button>+</button>
+      <button onclick="alterarQuantidade(-1)">−</button>
+      <span id="qtd">1</span>
+      <button onclick="alterarQuantidade(1)">+</button>
     </div>
-    <button class="btn-add">Adicionar<br/>R$ 23,00</button>
+    <button id="btnAdicionar" onclick="abrirPopup()">
+      <span>Adicionar</span>
+      <span id="preco">R$ 20,00</span>
+    </button>
   </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <img src="https://cdn-icons-png.flaticon.com/512/9471/9471004.png" alt="Adicionado"/>
+      <h3><strong>Cheddar Duplo Bacon</strong> adicionado ao carrinho!</h3>
+      <div class="botoes">
+        <button class="btn-secundario" onclick="fecharPopup()">Continuar comprando</button>
+        <a href="../produtos/carrinho.html">
+          <button class="btn-principal">Avançar para o carrinho</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let quantidade = 1;
+    const precoUnitario = 20.00;
+    const spanQtd = document.getElementById("qtd");
+    const spanPreco = document.getElementById("preco");
+
+    function alterarQuantidade(valor) {
+      quantidade += valor;
+      if (quantidade < 1) quantidade = 1;
+      atualizarPreco();
+    }
+
+    function atualizarPreco() {
+      const total = (precoUnitario * quantidade).toFixed(2).replace('.', ',');
+      spanQtd.textContent = quantidade;
+      spanPreco.textContent = 'R$ ' + total;
+    }
+
+    function abrirPopup() {
+      const nome = "Cheddar Duplo Bacon";
+      const preco = precoUnitario;
+      const qtd = quantidade;
+
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const existente = carrinho.find(p => p.nome === nome);
+      if (existente) {
+        existente.quantidade += qtd;
+      } else {
+        carrinho.push({ nome, preco, quantidade: qtd });
+      }
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    atualizarPreco();
+  </script>
 </body>
 </html>

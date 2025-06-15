@@ -1,109 +1,158 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bolota Burger - Perfil</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
+    .produto-detalhe img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
     }
-
-    header {
-      background-color: #ffffff;
-      padding: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-    }
-
-    header a {
-      text-decoration: none;
-      color: #000;
-      font-size: 18px;
-      margin-right: 10px;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 16px;
-      background-color: #ffffff;
-      border-radius: 8px;
-    }
-
-    h1 {
+    .voltar-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
       font-size: 20px;
-      margin: 0 0 8px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px 10px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      text-decoration: none;
     }
-
-    h2 {
-      font-size: 16px;
-      color: #333;
-      margin-top: 24px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 6px;
+    .detalhes {
+      padding: 1rem;
     }
-
-    p {
-      margin: 6px 0;
-      font-size: 15px;
-      color: #444;
+    .observacoes {
+      margin-top: 1.5rem;
     }
-
-    .highlight {
-      font-weight: bold;
-      color: #000;
+    .observacoes textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 10px;
     }
-
-    .icon {
-      display: inline-block;
-      margin-right: 5px;
-    }
-
-    .payment-icon {
+    .quantidade {
       display: flex;
+      justify-content: center;
       align-items: center;
-      margin-top: 8px;
+      margin: 1rem 0;
     }
-
-    .address {
-      margin-top: 10px;
+    .quantidade button {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      margin: 0 10px;
+      border: none;
+      background: red;
+      color: white;
+      border-radius: 50%;
+    }
+    .quantidade span {
+      font-size: 18px;
+      width: 30px;
+      text-align: center;
+    }
+    .adicionar-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: red;
+      color: white;
+      font-size: 18px;
+      padding: 1rem;
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      margin: auto;
     }
   </style>
+  <script>
+    let quantidade = 1;
+    function atualizarQuantidade(delta) {
+      quantidade = Math.max(1, quantidade + delta);
+      document.getElementById("quantidade").textContent = quantidade;
+    }
+  </script>
 </head>
 <body>
 
-<header>
-  <a href="index.html">←</a>
-  <span>Sobre o estabelecimento</span>
-</header>
+  <a href="index.html" class="voltar-btn">&#8592;</a>
 
-<div class="container">
-  <h1>BOLOTA BURGER</h1>
-  <p>O MELHOR COMBO DA CIDADE!</p>
-
-  <h2>Horário de atendimento</h2>
-  <p>Domingo: 18h às 23h</p>
-  <p>Terça-feira: 09h às 17h - 18h às 23h</p>
-  <p>Quarta-feira: 09h às 17h - 18h às 23h</p>
-  <p>Quinta-feira: 10h30 às 14h - 18h às 23h</p>
-  <p>Sexta-feira: 10h30 às 14h - 18h às 23h</p>
-  <p>Sábado: 10h30 às 14h - 18h às 23h</p>
-
-  <h2>Formas de pagamento</h2>
-  <div class="payment-icon">
-    💳 <span class="highlight">Cartões:</span> Visa, MasterCard, Elo Crédito, Mercado Pago, Maestro, Visa Electron, Elo Débito
-  </div>
-  <div class="payment-icon">
-    💵 <span class="highlight">Dinheiro</span>
+  <div class="produto-detalhe">
+    <img src="./img/hamburguer1.png" alt="Produto">
   </div>
 
-  <h2>Endereço</h2>
-  <p class="address">Rua Trinta e Um de Março, 756 - Vale do Aeroporto, MARABÁ - PA, 68.501-760, Brasil</p>
+  <div class="detalhes">
+    <h2>COMBO BOLOTA FUN BACON</h2>
+    <p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
+
+    <div class="observacoes">
+      <label for="obs"><strong>Observações</strong></label>
+      <textarea id="obs" id="obs" placeholder="Ex.: Tirar cebola, ovo, etc."></textarea>
+    </div>
+
+    <div class="quantidade">
+      <button onclick="atualizarQuantidade(-1)">-</button>
+      <span id="quantidade">1</span>
+      <button onclick="atualizarQuantidade(1)">+</button>
+    </div>
+  </div>
+
+  <div class="adicionar-btn">
+    Adicionar – R$ 23,00
+  </div>
+
+
+<!-- Modal de Confirmação -->
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:999; justify-content:center; align-items:center;">
+  <div style="background:white; border-radius:10px; padding:20px; max-width:90%; width:320px; text-align:center;">
+    <img src="https://cdn-icons-png.flaticon.com/512/5909/5909769.png" style="width:100px;" alt="Confirmação"/>
+    <h3 id="modal-title" style="margin: 20px 0;">Produto adicionado ao carrinho!</h3>
+    <p><strong>Quantidade:</strong> <span id="modal-qty">1</span></p>
+    <p><strong>Observações:</strong> <span id="modal-notes">(nenhuma)</span></p>
+    <button onclick="closeModal()" style="margin-top:10px; padding:10px 20px; border:1px solid red; background:white; color:red; border-radius:5px;">Continuar comprando</button>
+    <a href="carrinho.html" style="display:block; margin-top:10px; padding:10px 20px; background:red; color:white; text-decoration:none; border-radius:5px;">Avançar para o carrinho</a>
+  </div>
 </div>
 
+<script>
+  let qty = 1;
+  const qtyDisplay = document.getElementById('qty-display');
+  const modalQty = document.getElementById('modal-qty');
+  const modalNotes = document.getElementById('modal-notes');
+  
+  function updateQtyDisplay() {
+    qtyDisplay.innerText = qty;
+  }
+
+  function increaseQty() {
+    qty++;
+    updateQtyDisplay();
+  }
+
+  function decreaseQty() {
+    if (qty > 1) {
+      qty--;
+      updateQtyDisplay();
+    }
+  }
+
+  function showModal() {
+    modalQty.innerText = qty;
+    const obs = document.getElementById('obs').value;
+    modalNotes.innerText = obs ? obs : '(nenhuma)';
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
 </body>
 </html>

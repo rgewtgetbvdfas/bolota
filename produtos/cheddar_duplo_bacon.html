@@ -4,25 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cheddar Duplo Bacon</title>
-  <link rel="stylesheet" href="../styles.css" />
   <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
     .produto-header img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
+
     .produto-info {
       padding: 1rem;
     }
+
     .produto-info h2 {
       margin-bottom: 0.3rem;
     }
+
     .observacoes {
       background: #f1f1f1;
       padding: 0.5rem;
       margin: 1rem;
       border-radius: 6px;
     }
+
     .quantidade {
       display: flex;
       justify-content: space-between;
@@ -35,13 +45,21 @@
       padding: 0.75rem 1rem;
       border-top: 1px solid #ccc;
     }
+
     .quantidade button {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       padding: 0.4rem 0.8rem;
       border: none;
       background: none;
-      color: #555;
+      color: #d00;
+      cursor: pointer;
     }
+
+    .quantidade span {
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+
     .btn-add {
       background: red;
       color: white;
@@ -49,13 +67,72 @@
       padding: 0.6rem 1rem;
       border-radius: 6px;
       font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .popup img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .popup h3 {
+      margin-bottom: 1rem;
+    }
+
+    .popup .popup-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .popup .popup-buttons button {
+      padding: 0.7rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .continuar {
+      border: 2px solid red;
+      background: white;
+      color: red;
+    }
+
+    .carrinho {
+      background: red;
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="produto-header">
-    <img src="../assets/cheddar_duplo_bacon.jpg" alt="Cheddar Duplo Bacon" />
+    <img src="https://cdn.anotaai.com.br/_uploads/_images/bolota-burger/202309271556252332733873.jpeg" alt="Cheddar Duplo Bacon" />
   </div>
+
   <div class="produto-info">
     <h2>Cheddar Duplo Bacon</h2>
     <strong>R$ 20,00</strong>
@@ -64,16 +141,50 @@
 
   <div class="observacoes">
     <strong>Observações</strong><br/>
-    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
+    <textarea id="obsInput" rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
   </div>
 
   <div class="quantidade">
     <div>
-      <button>-</button>
-      <span>1</span>
-      <button>+</button>
+      <button onclick="alterarQtd(-1)">−</button>
+      <span id="qtd">1</span>
+      <button onclick="alterarQtd(1)">+</button>
     </div>
-    <button class="btn-add">Adicionar<br/>R$ 20,00</button>
+    <button class="btn-add" onclick="abrirPopup()">Adicionar<br/>R$ 20,00</button>
   </div>
+
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-complete-3049768-2544342.png" alt="adicionado" />
+      <h3 id="popupMsg">Produto adicionado ao carrinho!</h3>
+      <p><strong>Quantidade:</strong> <span id="popupQtd"></span></p>
+      <p><strong>Observações:</strong> <span id="popupObs"></span></p>
+
+      <div class="popup-buttons">
+        <button class="continuar" onclick="fecharPopup()">Continuar comprando</button>
+        <button class="carrinho" onclick="window.location.href='carrinho.html'">Avançar para o carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let quantidade = 1;
+
+    function alterarQtd(delta) {
+      quantidade = Math.max(1, quantidade + delta);
+      document.getElementById("qtd").textContent = quantidade;
+    }
+
+    function abrirPopup() {
+      document.getElementById("popupQtd").textContent = quantidade;
+      document.getElementById("popupObs").textContent = document.getElementById("obsInput").value || "Nenhuma";
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 </body>
 </html>
