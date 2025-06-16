@@ -143,14 +143,14 @@
     <strong>Observações</strong><br/>
     <textarea id="obsInput" rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
   </div>
-
+ 
   <div class="quantidade">
     <div>
       <button onclick="alterarQtd(-1)">−</button>
       <span id="qtd">1</span>
       <button onclick="alterarQtd(1)">+</button>
     </div>
-    <button class="btn-add" onclick="abrirPopup()">Adicionar<br/>R$ 20,00</button>
+    <button class="btn-add" onclick="adicionarProduto()">Adicionar<br/>R$ 20,00</button>
   </div>
 
   <!-- POPUP -->
@@ -171,20 +171,44 @@
   <script>
     let quantidade = 1;
 
-    function alterarQtd(delta) {
-      quantidade = Math.max(1, quantidade + delta);
-      document.getElementById("qtd").textContent = quantidade;
-    }
+  function alterarQtd(delta) {
+    quantidade = Math.max(1, quantidade + delta);
+    document.getElementById("qtd").textContent = quantidade;
+  }
 
-    function abrirPopup() {
-      document.getElementById("popupQtd").textContent = quantidade;
-      document.getElementById("popupObs").textContent = document.getElementById("obsInput").value || "Nenhuma";
-      document.getElementById("popup").style.display = "flex";
-    }
+  function abrirPopup(obsTexto) {
+    document.getElementById("popupQtd").textContent = quantidade;
+    document.getElementById("popupObs").textContent = obsTexto || "Nenhuma";
+    document.getElementById("popup").style.display = "flex";
+  }
 
-    function fecharPopup() {
-      document.getElementById("popup").style.display = "none";
-    }
+  function fecharPopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  function adicionarProduto() {
+    const nome = "Cheddar Duplo Bacon";
+    const preco = 20.00;
+    const qtd = quantidade;
+    const obs = document.getElementById("obsInput").value || "Nenhuma";
+
+    const produto = {
+      nome: nome,
+      preco: preco,
+      quantidade: qtd,
+      observacao: obs
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push(produto);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    abrirPopup(obs); // agora passando observação pro popup
+  }
   </script>
+
+  <script>
+  
+</script>
 </body>
 </html>

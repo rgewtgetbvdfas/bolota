@@ -3,26 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Combo Cheddar Fun Bacon</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <title>Cheddar Duplo Bacon</title>
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fff;
+    }
+
+    .produto-header {
+      position: relative;
+      overflow: hidden;
+      height: 100px;
+      transition: height 0.4s ease;
+      background-color: #000;
+    }
+
     .produto-header img {
       width: 100%;
-      height: 200px;
+      height: 100%;
+      object-fit: cover;
+      transition: object-fit 0.4s ease;
+    }
+
+    .sombra-baixo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to top, rgba(0,0,0,20), transparent);
+      z-index: 5;
+    }
+
+    .expandir {
+      height: 300px !important;
+    }
+
+    .expandir img {
       object-fit: cover;
     }
+
+    .seta-expandir {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  transition: transform 0.3s ease;
+  font-size: 20px;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.seta-expandir.girada {
+  transform: translateX(-50%) rotate(180deg);
+}
     .produto-info {
       padding: 1rem;
     }
+
     .produto-info h2 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.4rem;
+    }
+
+    .produto-info strong {
+      font-size: 1.1rem;
+      display: block;
       margin-bottom: 0.3rem;
     }
+
     .observacoes {
-      background: #f1f1f1;
-      padding: 0.5rem;
+      background: #d8d8d8;
+      backdrop-filter: blur(20px);
+      padding: 1rem;
       margin: 1rem;
       border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     }
+
+    .observacoes strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .observacoes textarea {
+      width: 98%;
+      padding: 0.2rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
     .quantidade {
       display: flex;
       justify-content: space-between;
@@ -35,46 +113,226 @@
       padding: 0.75rem 1rem;
       border-top: 1px solid #ccc;
     }
+
     .quantidade button {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       padding: 0.4rem 0.8rem;
       border: none;
       background: none;
-      color: #555;
+      color: #d00;
+      font-weight: bold;
     }
-    .btn-add {
-      background: red;
+
+    #btnAdicionar {
+      background: #c60000;
       color: white;
       border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #btnAdicionar span {
+      display: inline-block;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
+
+    .popup-content img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+    }
+
+    .popup-content h3 {
+      margin: 1rem 0;
+    }
+
+    .popup-content .botoes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .popup-content .botoes button {
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-secundario {
+      border: 2px solid #d00;
+      color: #d00;
+      background: white;
+    }
+
+    .btn-principal {
+      background: #d00;
+      color: white;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <div class="produto-header">
-    <img src="../assets/cheddar_fun.jpg" alt="Combo Cheddar Fun Bacon" />
+
+  <div class="produto-header" id="imagemHeader">
+    <img src="../img/foto_hanbu/hanbuu.jpg" alt="Cheddar Duplo Bacon" />
+    <div class="sombra-baixo"></div>
+    <div class="seta-expandir" onclick="expandirImagem()">⌄</div>
   </div>
+
   <div class="produto-info">
-    <h2>Combo Cheddar Fun Bacon</h2>
-    <strong>R$ 23,00</strong>
-    <p>1 hambúrguer, cheddar cremoso, bacon, alface e tomate, maionese grill.</p>
+    <h2>Cheddar Duplo Bacon</h2>
+    <strong>R$ 20,00</strong>
+    <p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
   </div>
 
   <div class="observacoes">
     <strong>Observações</strong><br/>
-    <textarea rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
+    <textarea id="campoObservacao" rows="4" placeholder="Ex.: Tirar cebola, ovo, etc."></textarea>
   </div>
 
   <div class="quantidade">
     <div>
-      <button>-</button>
-      <span>1</span>
-      <button>+</button>
+      <button onclick="alterarQuantidade(-1)">−</button>
+      <span id="qtd">1</span>
+      <button onclick="alterarQuantidade(1)">+</button>
     </div>
-    <button class="btn-add">Adicionar<br/>R$ 23,00</button>
+    <button id="btnAdicionar" onclick="abrirPopup()">
+      <span>Adicionar</span>
+      <span id="preco">R$ 20,00</span>
+    </button>
   </div>
-  
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <img src="https://cdn-icons-png.flaticon.com/512/9471/9471004.png" alt="Adicionado"/>
+      <h3><strong>Cheddar Duplo Bacon</strong> adicionado ao carrinho!</h3>
+      <div class="botoes">
+        <button class="btn-secundario" onclick="fecharPopup()">Continuar comprando</button>
+        <a href="../produtos/carrinho.html">
+          <button onclick="adicionarAoCarrinho" class="btn-principal">Avançar para o carrinho</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let quantidade = 1;
+    const precoUnitario = 20.00;
+    const spanQtd = document.getElementById("qtd");
+    const spanPreco = document.getElementById("preco");
+
+    function alterarQuantidade(valor) {
+      quantidade += valor;
+      if (quantidade < 1) quantidade = 1;
+      atualizarPreco();
+    }
+
+    function atualizarPreco() {
+      const total = (precoUnitario * quantidade).toFixed(2).replace('.', ',');
+      spanQtd.textContent = quantidade;
+      spanPreco.textContent = 'R$ ' + total;
+    }
+
+    function abrirPopup() {
+      const nome = "Cheddar Duplo Bacon";
+      const preco = precoUnitario;
+      const qtd = quantidade;
+      const observacao = document.getElementById("observacao").value.trim();
+
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const existente = carrinho.find(p => p.nome === nome);
+      if (existente) {
+        existente.quantidade += qtd;
+      } else {
+        carrinho.push({ nome, preco, quantidade: qtd });
+      }
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function expandirImagem() {
+  const header = document.getElementById("imagemHeader");
+  const seta = header.querySelector(".seta-expandir");
+
+  header.classList.toggle("expandir");
+  seta.classList.toggle("girada");
+}
+
+    atualizarPreco();
+  </script>
+
+  <script>
+    
+
+  function alterarQtd(delta) {
+    quantidade = Math.max(1, quantidade + delta);
+    document.getElementById("qtd").textContent = quantidade;
+  }
+
+  function abrirPopup(obsTexto) {
+    document.getElementById("popupQtd").textContent = quantidade;
+    document.getElementById("popupObs").textContent = obsTexto || "Nenhuma";
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function fecharPopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  function adicionarProduto() {
+    const nome = "Cheddar Duplo Bacon";
+    const preco = 20.00;
+    const qtd = quantidade;
+    const obs = document.getElementById("obsInput").value || "Nenhuma";
+
+    const produto = {
+      nome: nome,
+      preco: preco,
+      quantidade: qtd,
+      observacao: obs
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push(produto);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    abrirPopup(obs); // agora passando observação pro popup
+  }
+  </script>
 </body>
 </html>
