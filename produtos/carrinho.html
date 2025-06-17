@@ -1,124 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrinho - Bolota Burguer</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fff;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho - Bolota Burguer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+        }
 
-    header {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-    }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
 
-    header h2 {
-      margin-left: 10px;
-      font-size: 18px;
-    }
+        header h2 {
+            margin-left: 10px;
+            font-size: 18px;
+        }
 
-    .produto {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px;
-      border-bottom: 1px solid #eee;
-    }
+        .produto {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
 
-    .produto img {
-      width: 50px;
-      margin-right: 10px;
-    }
+        .produto img {
+            width: 50px;
+            margin-right: 10px;
+        }
 
-    .produto-info {
-      flex-grow: 1;
-    }
+        .produto-info {
+            flex-grow: 1;
+        }
 
-    .produto-controles {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .produto-controles {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .produto-controles button {
-      width: 32px;
-      height: 32px;
-      font-size: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff;
-      cursor: pointer;
-    }
+        .produto-controles button {
+            width: 32px;
+            height: 32px;
+            font-size: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
 
-    .limpar-btn {
-      color: red;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
-      margin-right: 15px;
-    }
+        .limpar-btn {
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 15px;
+        }
 
-    .btn-avancar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: red;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 10px 10px 0 0;
-    }
+        .btn-avancar {
+            cursor: pointer;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 95%;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+        }
 
-    .valor-item {
-      font-size: 14px;
-      margin-top: 5px;
-      font-weight: bold;
-      color: #333;
-    }
-  </style>
+        .valor-item {
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <span onclick="limparCarrinho()" class="limpar-btn">🗑 Limpar</span>
-    <h2>Carrinho</h2>
-  </header>
+    <header>
+        <span onclick="limparCarrinho()" class="limpar-btn">🗑 Limpar</span>
+        <h2>Carrinho</h2>
+    </header>
 
-  <div id="carrinhoContainer"></div>
+    <div id="carrinhoContainer"></div>
 
-  <div class="btn-avancar">
-    <span>Avançar</span>
-    <span id="totalFinal">R$ 0,00</span>
-  </div>
+    <div class="btn-avancar">
+        <span id="btnAvancar">Avançar</span>
+        <span id="totalFinal">R$ 0,00</span>
+    </div>
 
-  
 
-  <script>
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-  function renderizarCarrinho() {
-    const container = document.getElementById('carrinhoContainer');
-    container.innerHTML = '';
-    let total = 0;
+    <script>
+        let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    carrinho.forEach(item => {
-      const subtotal = item.preco * item.quantidade;
-      total += subtotal;
+        function renderizarCarrinho() {
+            const container = document.getElementById('carrinhoContainer');
+            container.innerHTML = '';
+            let total = 0;
 
-      const div = document.createElement('div');
-      div.className = 'produto';
-      div.innerHTML = `
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                const div = document.createElement('div');
+                div.className = 'produto';
+                div.innerHTML = `
         <img src="https://via.placeholder.com/50" />
         <div class="produto-info">
           <strong>${item.quantidade}x ${item.nome}</strong><br>
@@ -132,38 +135,45 @@
           <button onclick="alterarQuantidade('${item.nome}', '${item.observacao || ''}', 1)">+</button>
         </div>
       `;
-      container.appendChild(div);
-    });
+                container.appendChild(div);
+            });
 
-    const totalFormatado = "R$ " + total.toFixed(2).replace(".", ",");
-    document.getElementById("totalFinal").textContent = totalFormatado;
-    document.getElementById("totalFinalBottom").textContent = totalFormatado;
-  }
+            const totalFormatado = "R$ " + total.toFixed(2).replace(".", ",");
+            document.getElementById("totalFinal").textContent = totalFormatado;
+            document.getElementById("totalFinalBottom").textContent = totalFormatado;
+        }
 
-  function alterarQuantidade(nome, observacao, delta) {
-    const item = carrinho.find(p => p.nome === nome && (p.observacao || '') === observacao);
-    if (item) {
-      item.quantidade += delta;
-      if (item.quantidade < 1) item.quantidade = 1;
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      renderizarCarrinho();
-    }
-  }
+        function alterarQuantidade(nome, observacao, delta) {
+            const item = carrinho.find(p => p.nome === nome && (p.observacao || '') === observacao);
+            if (item) {
+                item.quantidade += delta;
+                if (item.quantidade < 1) item.quantidade = 1;
+                localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                renderizarCarrinho();
+            }
+        }
 
-  function removerProduto(nome, observacao) {
-    carrinho = carrinho.filter(p => !(p.nome === nome && (p.observacao || '') === observacao));
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    renderizarCarrinho();
-  }
+        function removerProduto(nome, observacao) {
+            carrinho = carrinho.filter(p => !(p.nome === nome && (p.observacao || '') === observacao));
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            renderizarCarrinho();
+        }
 
-  function limparCarrinho() {
-    carrinho = [];
-    localStorage.removeItem("carrinho");
-    renderizarCarrinho();
-  }
+        function limparCarrinho() {
+            carrinho = [];
+            localStorage.removeItem("carrinho");
+            renderizarCarrinho();
+        }
 
-  renderizarCarrinho()
-  
-</script>
+        renderizarCarrinho()
+
+    </script>
+
+    <script>
+        document.getElementById("btnAvancar").addEventListener("click", function () {
+            window.location.href = "produtos.html"; // Troque pelo nome da página que quiser abrir
+        });
+    </script>
 </body>
+
 </html>
