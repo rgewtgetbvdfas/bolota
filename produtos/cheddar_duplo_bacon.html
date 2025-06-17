@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cheddar Duplo Bacon</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Montserrat, sans-serif;
       margin: 0;
       padding: 0;
       background: #fff;
     }
 
+    .produto-header {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+      transition: height 0.4s ease;
+      background-color: #000;
+    }
+
     .produto-header img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
+      transition: object-fit 0.4s ease;
+    }
+
+    .sombra-baixo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 10.0), transparent);
+      z-index: 5;
+    }
+
+    .expandir {
+      height: 300px !important;
+    }
+
+    .expandir img {
+      object-fit: cover;
+    }
+
+    .seta-expandir {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(0deg);
+      transition: transform 0.3s ease;
+      font-size: 20px;
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .seta-expandir.girada {
+      transform: translateX(-50%) rotate(180deg);
     }
 
     .produto-info {
@@ -23,15 +73,28 @@
     }
 
     .produto-info h2 {
+      margin: 0 0 0.3rem 0;
+      font-size: 1.4rem;
+      font-family: Montserrat, sans-serif;
+
+    }
+
+    .produto-info strong {
+      font-size: 1.1rem;
+      display: block;
       margin-bottom: 0.3rem;
+      color: #808080;
+      font-family: Montserrat, sans-serif;
     }
 
     .observacoes {
-      background: #f1f1f1;
+      background: #8b8b8b6c;
       padding: 0.5rem;
       margin: 1rem;
-      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+      border-radius: 20px;
     }
+
 
     .quantidade {
       display: flex;
@@ -47,12 +110,15 @@
     }
 
     .quantidade button {
-      font-size: 1.4rem;
-      padding: 0.4rem 0.8rem;
+      background: red;
+      color: white;
       border: none;
-      background: none;
-      color: #d00;
-      cursor: pointer;
+      padding: 0.3rem 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.2;
+
     }
 
     .quantidade span {
@@ -60,15 +126,6 @@
       font-size: 1.2rem;
     }
 
-    .btn-add {
-      background: red;
-      color: white;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
 
     .popup-overlay {
       position: fixed;
@@ -76,7 +133,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.4);
+      background-color: rgba(0, 0, 0, 0.4);
       display: none;
       justify-content: center;
       align-items: center;
@@ -128,35 +185,41 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="produto-header">
-    <img src="https://cdn.anotaai.com.br/_uploads/_images/bolota-burger/202309271556252332733873.jpeg" alt="Cheddar Duplo Bacon" />
+
+  <div class="produto-header" id="imagemHeader">
+    <img src="../img/foto_hanbu/hanbuu.jpg" alt="Cheddar Duplo Bacon" />
+    <div class="sombra-baixo"></div>
+    <div class="seta-expandir" onclick="expandirImagem()">⌄</div>
   </div>
 
   <div class="produto-info">
-    <h2>Cheddar Duplo Bacon</h2>
-    <strong>R$ 20,00</strong>
-    <p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+    <h2>COMBO BOLOTA FUN BACON</h2>
+    <strong>R$ 23,00</strong>
+    <p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
   </div>
 
   <div class="observacoes">
-    <strong>Observações</strong><br/>
-    <textarea id="obsInput" rows="4" placeholder="Ex.: Tirar cebola, ovo, etc." style="width: 100%; margin-top: 0.5rem;"></textarea>
+    <strong>Observações</strong><br />
+    <textarea id="obsInput" rows="4" placeholder="Ex.: Tirar cebola, ovo, etc."
+      style="width: 100%; margin-top: 0.5rem; border-radius: 10px; margin-left: -2px;"></textarea>
   </div>
- 
+
   <div class="quantidade">
     <div>
       <button onclick="alterarQtd(-1)">−</button>
       <span id="qtd">1</span>
       <button onclick="alterarQtd(1)">+</button>
     </div>
-    <button class="btn-add" onclick="adicionarProduto()">Adicionar<br/>R$ 20,00</button>
+    <button class="btn-add" onclick="adicionarProduto()">Adicionar<br />R$ 20,00</button>
   </div>
 
   <!-- POPUP -->
   <div class="popup-overlay" id="popup">
     <div class="popup">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-complete-3049768-2544342.png" alt="adicionado" />
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/shopping-complete-3049768-2544342.png"
+        alt="adicionado" />
       <h3 id="popupMsg">Produto adicionado ao carrinho!</h3>
       <p><strong>Quantidade:</strong> <span id="popupQtd"></span></p>
       <p><strong>Observações:</strong> <span id="popupObs"></span></p>
@@ -171,44 +234,75 @@
   <script>
     let quantidade = 1;
 
-  function alterarQtd(delta) {
-    quantidade = Math.max(1, quantidade + delta);
-    document.getElementById("qtd").textContent = quantidade;
-  }
+    function alterarQtd(delta) {
+      quantidade = Math.max(1, quantidade + delta);
+      document.getElementById("qtd").textContent = quantidade;
+      atualizarBotao(); // chama a função que atualiza o botão
+    }
 
-  function abrirPopup(obsTexto) {
-    document.getElementById("popupQtd").textContent = quantidade;
-    document.getElementById("popupObs").textContent = obsTexto || "Nenhuma";
-    document.getElementById("popup").style.display = "flex";
-  }
+    function atualizarBotao() {
+      const precoUnitario = 20.00;
+      const valorTotal = (quantidade * precoUnitario).toFixed(2).replace('.', ',');
+      const botao = document.querySelector(".btn-add");
+      botao.innerHTML = "Adicionar <br /> R$ " + valorTotal;
+    }
 
-  function fecharPopup() {
-    document.getElementById("popup").style.display = "none";
-  }
+    function abrirPopup(obsTexto) {
+      document.getElementById("popupQtd").textContent = quantidade;
+      document.getElementById("popupObs").textContent = obsTexto || "Nenhuma";
+      document.getElementById("popup").style.display = "flex";
+    }
 
-  function adicionarProduto() {
-    const nome = "Cheddar Duplo Bacon";
-    const preco = 20.00;
-    const qtd = quantidade;
-    const obs = document.getElementById("obsInput").value || "Nenhuma";
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
 
-    const produto = {
-      nome: nome,
-      preco: preco,
-      quantidade: qtd,
-      observacao: obs
-    };
+    function expandirImagem() {
+      const header = document.getElementById("imagemHeader");
+      const seta = header.querySelector(".seta-expandir");
 
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    carrinho.push(produto);
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      header.classList.toggle("expandir");
+      seta.classList.toggle("girada");
+    }
 
-    abrirPopup(obs); // agora passando observação pro popup
-  }
+    function adicionarProduto() {
+      const nome = "Cheddar Duplo Bacon";
+      const preco = 20.00;
+      const qtd = quantidade;
+      const obs = document.getElementById("obsInput").value || "Nenhuma";
+
+      const produto = {
+        nome: nome,
+        preco: preco,
+        quantidade: qtd,
+        observacao: obs
+      };
+
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+let index = carrinho.findIndex(item =>
+  item.nome === produto.nome && item.observacao === produto.observacao
+);
+
+if (index !== -1) {
+  // Já existe, só aumenta a quantidade
+  carrinho[index].quantidade += produto.quantidade;
+} else {
+  // Não existe, adiciona novo
+  carrinho.push(produto);
+}
+
+localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+      abrirPopup(obs);
+
+      atualizarBotao(); // Atualiza botão após adicionar
+    }
   </script>
 
   <script>
-  
-</script>
+
+  </script>
 </body>
+
 </html>

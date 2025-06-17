@@ -237,6 +237,14 @@
     function alterarQtd(delta) {
       quantidade = Math.max(1, quantidade + delta);
       document.getElementById("qtd").textContent = quantidade;
+      atualizarBotao(); // chama a função que atualiza o botão
+    }
+
+    function atualizarBotao() {
+      const precoUnitario = 20.00;
+      const valorTotal = (quantidade * precoUnitario).toFixed(2).replace('.', ',');
+      const botao = document.querySelector(".btn-add");
+      botao.innerHTML = "Adicionar <br /> R$ " + valorTotal;
     }
 
     function abrirPopup(obsTexto) {
@@ -271,10 +279,24 @@
       };
 
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      carrinho.push(produto);
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-      abrirPopup(obs); // agora passando observação pro popup
+let index = carrinho.findIndex(item =>
+  item.nome === produto.nome && item.observacao === produto.observacao
+);
+
+if (index !== -1) {
+  // Já existe, só aumenta a quantidade
+  carrinho[index].quantidade += produto.quantidade;
+} else {
+  // Não existe, adiciona novo
+  carrinho.push(produto);
+}
+
+localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+      abrirPopup(obs);
+
+      atualizarBotao(); // Atualiza botão após adicionar
     }
   </script>
 
