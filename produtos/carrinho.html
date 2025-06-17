@@ -63,6 +63,17 @@
             font-weight: bold;
             font-size: 14px;
             margin-right: 15px;
+            position: absolute;
+            right: 20px;
+        }
+
+        .voltar {
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 15px;
+            
         }
 
         .btn-avancar {
@@ -88,6 +99,10 @@
             font-weight: bold;
             color: #333;
         }
+
+        .opa {
+            width: 30px;
+        }
     </style>
 </head>
 
@@ -95,16 +110,16 @@
 
     <header>
         <span onclick="limparCarrinho()" class="limpar-btn">🗑 Limpar</span>
+        <span id="voltar" class="voltar"> <img src="../img/voltar.png" alt="tt" class="opa"> </span>
         <h2>Carrinho</h2>
     </header>
 
     <div id="carrinhoContainer"></div>
 
-    <div class="btn-avancar">
-        <span id="btnAvancar">Avançar</span>
+    <div id="btnAvancar" class="btn-avancar">
+        <span id="btnA.vancar">Avançar</span>
         <span id="totalFinal">R$ 0,00</span>
     </div>
-
 
 
     <script>
@@ -172,6 +187,12 @@
     <script>
         document.getElementById("btnAvancar").addEventListener("click", function () {
             window.location.href = "produtos.html"; // Troque pelo nome da página que quiser abrir
+        });
+    </script>
+
+    <script>
+        document.getElementById("voltar").addEventListener("click", function () {
+            window.location.href = "../index.html"; // Troque pelo nome da página que quiser abrir
         });
     </script>
 </body>
