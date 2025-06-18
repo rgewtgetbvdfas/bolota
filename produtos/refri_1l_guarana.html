@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cheddar Duplo Bacon</title>
+  <title>Combo Bolota fun Bacon</title>
   <style>
     body {
       font-family: Montserrat, sans-serif;
@@ -183,21 +183,63 @@
       background: red;
       color: white;
     }
+
+
+    .icones-topo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      z-index: 11;
+    }
+
+    .icone-btn {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .icone-btn img {
+            width: 19px;
+            height: 19px;
+        }
   </style>
 </head>
 
 <body>
 
+  <header>
+  </header>
   <div class="produto-header" id="imagemHeader">
+
+    <!-- Botões flutuantes -->
+    <div class="icones-topo">
+      <button onclick="voltar()" class="icone-btn"> <img src="../img/voltar.png" alt="" class="oop"></button>
+      <button onclick="compartilhar()" class="icone-btn"> <img src="../img/logooo.png" alt="" class="oop"></button>
+    </div>
+
     <img src="../img/foto_hanbu/hanbuu.jpg" alt="Cheddar Duplo Bacon" />
     <div class="sombra-baixo"></div>
     <div class="seta-expandir" onclick="expandirImagem()">⌄</div>
   </div>
 
+
+
   <div class="produto-info">
     <h2>COMBO BOLOTA FUN BACON</h2>
     <strong>R$ 23,00</strong>
-    <p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
+    <p>1 hambúrguer, queijo alface, tomate, bacon,<br> maionese grill.</p>
   </div>
 
   <div class="observacoes">
@@ -280,23 +322,39 @@
 
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-let index = carrinho.findIndex(item =>
-  item.nome === produto.nome && item.observacao === produto.observacao
-);
+      let index = carrinho.findIndex(item =>
+        item.nome === produto.nome && item.observacao === produto.observacao
+      );
 
-if (index !== -1) {
-  // Já existe, só aumenta a quantidade
-  carrinho[index].quantidade += produto.quantidade;
-} else {
-  // Não existe, adiciona novo
-  carrinho.push(produto);
-}
+      if (index !== -1) {
+        // Já existe, só aumenta a quantidade
+        carrinho[index].quantidade += produto.quantidade;
+      } else {
+        // Não existe, adiciona novo
+        carrinho.push(produto);
+      }
 
-localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
       abrirPopup(obs);
 
       atualizarBotao(); // Atualiza botão após adicionar
+    }
+
+    function voltar() {
+      window.history.back(); // volta pra página anterior
+    }
+
+    function compartilhar() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Bolota Burguer',
+          text: 'Dá uma olhada nesse lanche!',
+          url: window.location.href,
+        }).catch((err) => console.log('Erro ao compartilhar:', err));
+      } else {
+        alert('Compartilhamento não suportado nesse navegador');
+      }
     }
   </script>
 
