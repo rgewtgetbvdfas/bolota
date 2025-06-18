@@ -1,646 +1,866 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bolota Burger</title>
-<link href="styles.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
 
-.abas a.active {
-  color: red;
-  border-bottom: 2px solid red;
-  padding-bottom: 8px;
-}
-</style>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Bolota Burger</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .abas a.active {
+      color: red;
+      border-bottom: 2px solid red;
+      padding-bottom: 8px;
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Barra de pesquisa oculta -->
-<div id="searchBox" class="search-box" style="display: none;">
-  <input type="text" id="searchInput" placeholder="Buscar produto...">
-  <ul id="searchResults"></ul>
-</div>
-<!-- Lupa já existente no header -->
-
-    <header class="bolota-topbar">
-  <div class="bolota-container">
-    <div class="logo-section">
-      <img src="./img/logo (2).png" alt="Bolota Burger" class="logo" />
-      <span class="title">BOLOTA BURGER</span>
-    </div>
-    <div class="icons">
-      <img src="./img/lupa.png" alt="Buscar" />
-      <img src="./img/logoo.png" alt="Compartilhar" class="icon-share" id="compartilharicone" />
-    </div>
+  <div id="searchBox" class="search-box" style="display: none;">
+    <input type="text" id="searchInput" placeholder="Buscar produto...">
+    <ul id="searchResults"></ul>
   </div>
-  <div class="bolota-info">
-    <span>Aberto até 23h</span>
-    <span class="dot">•</span>
-    <span>Pedido mín. R$ 5,00</span>
-    <a href="./perfil.html" class="perfil-loja">Perfil da loja</a>
+  <!-- Lupa já existente no header -->
+
+  <header class="bolota-topbar">
+    <div class="bolota-container">
+      <div class="logo-section">
+        <img src="./img/logo.png" alt="Bolota Burger" class="logo" />
+        <span class="title">BOLOTA BURGER</span>
+      </div>
+      <div class="icons">
+        <img src="./img/lupa.png" alt="Buscar" />
+        <img src="./img/logoo.png" alt="Compartilhar" class="icon-share" id="compartilharicone" />
+      </div>
+    </div>
+    <div class="bolota-info">
+      <span>Aberto até 23h</span>
+      <span class="dot">•</span>
+      <span>Pedido mín. R$ 5,00</span>
+      <a href="./perfil.html" class="perfil-loja">Perfil da loja</a>
+    </div>
+  </header>
+
+  <div class="abas">
+    <a href="#combo">COMBO = BURGER + FRITAS + BEBIDAS</a>
+    <a href="#hamburguer">HAMBURGUER</a>
+    <a href="#fritas">FRITA´S</a>
+    <a href="#bebidas">BEBIDAS</a>
+    <a href="#promocoes">PROMOÇÕES</a>
+    <a href="#adicionais">ADICIONAIS</a>
   </div>
-</header>
 
-<div class="abas">
-  <a href="#combo">COMBO = BURGER + FRITAS + BEBIDAS</a>
-  <a href="#hamburguer">HAMBURGUER</a>
-  <a href="#fritas">FRITA´S</a>
-  <a href="#bebidas">BEBIDAS</a>
-  <a href="#promocoes">PROMOÇÕES</a>
-  <a href="#adicionais">ADICIONAIS</a>
-</div>
+  <div class="carrossel-container">
+    <h2>Os mais pedidos</h2>
+    <section>
+      <div class="carrossel">
 
-<div class="carrossel-container">
-  <h2>Os mais pedidos</h2>
-  <div class="carrossel">
-    <div class="card-produto">
-      <img src="./img/img1/han6.png" alt="Cheddar Duplo">
-      <span>Cheddar Duplo<br> combo<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img2/hanbu1.png" alt="Cheddar Duplo Bacon">
-      <span>Cheddar Duplo Bacon<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img3/frita1.png" alt="Cheddar Fun">
-      <span>Cheddar Fun<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img4/re1.png" alt="Chesse Fun">
-      <span>Chesse Fun<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img4/re2.png" alt="Clássico Especial">
-      <span>Clássico Especial<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img3/frita3.png" alt="Duplo Bacon">
-      <span>Duplo Bacon<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img5/promo5.png" alt="Duplo Cream">
-      <span>Duplo Cream<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img1/han6.png" alt="Duplo Cream Chesse">
-      <span>Duplo Cream Chesse<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img3/frita2.png" alt="Fritas Bacon Cheddar">
-      <span>Fritas Bacon Cheddar<br>R$ 20,00</span>
-    </div>
-    <div class="card-produto">
-      <img src="./img/img6/ad4.png" alt="Fritas Bacon Chesse">
-      <span>Fritas Bacon Chesse<br>R$ 20,00</span>
-    </div>
+        <a href="./produtos/duplo_bacon_combo.html">
+          <div class="card-produto">
+            <img src="./img/img1/han6.png" alt="Cheddar Duplo">
+            <span>Cheddar Duplo<br> combo<br>R$ 20,00</span>
+          </div>
+        </a>
+
+        <a href="./produtos/cheddar_bacon_duplo.html">
+          <div class="card-produto">
+            <img src="./img/img1/han5.png" alt="Cheddar Duplo Bacon">
+            <span>Cheddar Duplo Bacon<br>R$ 20,00</span>
+          </div>
+        </a>
+
+        <a href="./produtos/duplo_cream_chesse.html">
+          <div class="card-produto">
+            <img src="./img/img1/han6.png" alt="Cheddar Fun">
+            <span>Cheddar Fun<br>R$ 20,00</span>
+          </div>
+        </a>
+
+        <a href="./produtos/original.html">
+          <div class="card-produto">
+            <img src="./img/img1/han9.png" alt="Chesse Fun">
+            <span>Chesse Fun<br>R$ 20,00</span>
+          </div>
+        </a>
+
+        <a href="./produtos/combo_chesse_fun.html">
+          <div class="card-produto">
+            <img src="./img/foto_hanbu/hanbuu.jpg" alt="Clássico Especial">
+            <span>Clássico Especial<br>R$ 20,00</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
   </div>
-</div>
-
-<style>
-.carrossel-container {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  padding: 10px;
-}
-.carrossel-container h2 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-.carrossel {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  scroll-behavior: smooth;
-}
-.carrossel::-webkit-scrollbar {
-  display: none;
-}
-.card-produto {
-  flex: 0 0 auto;
-  width: 130px;
-  border-radius: 10px;
-  background: #f2f2f2;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 5px;
-  text-align: center;
-}
-.card-produto img {
-  width: 100%;
-  border-radius: 8px;
-}
-.card-produto span {
-  display: block;
-  margin-top: 5px;
-  font-size: 14px;
-}
-</style>
-
-<h2 class="essa">Combo = Burger + Fritas + Bebidas</h2>
-</section>
-<section class="item-list" id="combo">
-<a href="produtos/combo_fun_bacon.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Combo Bolota Fun Bacon</h3>
-<p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
-<span class="price">R$ 23,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han1.png"/></div>
-</div>
-</a>
-<a href="produtos/combo_cheddar_fun.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Combo Cheddar Fun Bacon</h3>
-<p>1 hambúrguer, cheddar cremoso, bacon, alface e tomate, maionese grill.</p>
-<span class="price">R$ 23,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han2.png"/></div>
-</div>
-</a>
-<a href="produtos/combo_chesse_fun.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Combo Chesse Fun Bacon</h3>
-<p>1 hambúrguer, cream cheese, bacon, alface e tomate e maionese grill.</p>
-<span class="price">R$ 23,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han3.png"/></div>
-</div>
-</a>
-<a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Duplo Cream Chesse combo</h3>
-<p>2 carnes, bacon crispy, cream chesse, molho chipotle e pão brioche.</p>
-<span class="price">R$ 25,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han4.png"/></div>
-</div>
-</a>
-<a href="produtos/cheddar_bacon_duplo.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Cheddar bacon duplo combo</h3>
-<p>O hambúrguer duplo mais vendido da casa, com 2 blends de 100g cada cobertos por cream cheddar e fatias de bacon defumado e maionese especial.</p>
-<span class="price">R$ 25,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han5.png"/></div>
-</div>
-</a>
-<a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Duplo Bacon Combo</h3>
-<p>Burger Duplo: apenas 2 blend de 100g queijo, fatias de bacon maionese especial e maionese grill.</p>
-<span class="price">R$ 25,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img1/han6.png"/></div>
-</div>
-</a>
-</section><section class="item-list" id="hamburguer">
-<h2>HAMBURGER</h2>
-<a href="produtos/cheddar_duplo_bacon.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Cheddar Duplo Bacon</h3>
-<p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
-<span class="price">R$ 20,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu1.png"/></div>
-</div>
-</a>
-<a href="produtos/duplo_bacon.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Duplo Bacon</h3>
-<p>2 CARNES, BACON CRISPY, QUEIJO, MOLHO CHIPOTLE E PÃO BRIOCHE</p>
-<span class="price">R$ 20,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu2.png"/></div>
-</div>
-</a>
-<a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Duplo Cream Chesse</h3>
-<p>2 CARENES, BACON CRISPY, CREAM CHESSE, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
-<span class="price">R$ 20,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu3.png"/></div>
-</div>
-</a>
-<a href="produtos/triplo_bacon.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Triplo Bacon</h3>
-<p>3 CARNES, BACON CRISPY, MOOLHO CHIPOTLE E PÃO BRIOCHE.</p>
-<span class="price">R$ 23,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu4.png"/></div>
-</div>
-</a>
-<a href="produtos/classico_especial.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Classico Especial</h3>
-<p>1 hambúrguer, ovo, queijo, alface e tomate, maionese grill.</p>
-<span class="price">R$ 15,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu5.png"/></div>
-</div>
-</a>
-<a href="produtos/original.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Original</h3>
-<p>1 CARNE, QUEIJO, OVO, CALABRESA, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
-<span class="price">R$ 16,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img2/hanbu6.png"/></div>
-</div>
-</a>
-</section><section class="item-list" id="fritas">
-<h2>FRITA´S</h2>
-<a href="produtos/fritas_bacon_cheddar.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Fritas Bacon Cheddar</h3>
-<p>BATATA, CHEDDAR CREMOSO, BACON CRISPY. porção serve até 3 pessoas</p>
-<span class="price">R$ 25,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img3/frita1.png"/></div>
-</div>
-</a>
-<a href="produtos/fritas_bacon_chesse.html" style="text-decoration: none;">
-<div class="item">
-<div class="item-info">
-<h3>Fritas Bacon Chesse</h3>
-<p>BATATA, CREAM CHESSE, BACON CRISPY. serve até 3 pessoas.</p>
-<span class="price">R$ 25,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img3/frita2.png"/></div>
-</div>
-</a>
-<a href="produtos/fritas_tradicional.html" style="text-decoration: none;"> 
-<div class="item">
-<div class="item-info">
-<h3>Fritas Tradicional</h3>
-<p>BATATA FRITA.</p>
-<span class="price">R$ 15,00</span>
-</div>
-<div class="item-img"><img alt="" src="./img/img3/frita3.png"/></div>
-</div>
-</a>
-</section>
-<section class="item-list" id="bebidas">
-  <h2>BEBIDAS</h2>
-
-  <a href="produtos/refri_lata_guarana.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Refri Lata Guaraná</h3>
-        <p>Guaraná Antarctica em lata</p>
-        <span class="price">R$ 4,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re1.png" alt="Guaraná lata"></div>
-    </div>
-  </a>
-
-  <a href="produtos/agua.html">
-    <div class="item">
-      <div class="item-info">
-        <h3>Água</h3>
-        <p>Água mineral sem gás</p>
-        <span class="price">R$ 3,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re2.png" alt="Água"></div>
-    </div>
-  </a>
-
-  <a href="produtos/suco_goiaba.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Suco Goiaba</h3>
-        <p>Suco natural de goiaba</p>
-        <span class="price">R$ 5,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re3.png" alt="Suco Goiaba"></div>
-    </div>
-  </a>
-
-  <a href="produtos/refri_1l_guarana.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Refri 1L Guaraná</h3>
-        <p>Guaraná Antarctica 1 Litro</p>
-        <span class="price">R$ 7,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re4.png" alt="Guaraná 1L"></div>
-    </div>
-  </a>
-
-  <a href="produtos/refri_1l_coca-cola.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Refri 1,5L Coca-Cola</h3>
-        <p>Refrigerante Coca-Cola 1,5 Litro</p>
-        <span class="price">R$ 10,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re5.png" alt="Coca 1,5L"></div>
-    </div>
-  </a>
-
-  <a href="produtos/refri_1l_retornavel.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Refri Coca 1L Retornável</h3>
-        <p>Coca-Cola retornável</p>
-        <span class="price">R$ 8,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img4/re6.png" alt="Coca Retornável"></div>
-    </div>
-  </a>
-</section>
-
-<section class="item-list" id="promocoes">
-  <h2>PROMOÇÕES <span style="color: red;">%</span></h2>
-
-  <a href="produtos/promocao_3x_classicos.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>3x Clássicos Combos</h3>
-        <p>3 Combos clássicos com hambúrgueres incríveis.</p>
-        <span class="price">R$ 50,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img5/promo1.png" alt="3x Clássicos"></div>
-    </div>
-  </a>
-
-  <a href="produtos/promocao_fun_cheddar.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>2 Hambúrgueres Fun Bacon e Cheddar Bacon + Coca 600ml</h3>
-        <p>1 Fun Bacon e 1 Cheddar Bacon com Coca 600ml.</p>
-        <span class="price">R$ 30,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img5/promo2.png" alt="Fun + Cheddar + Coca"></div>
-    </div>
-  </a>
-
-  <a href="produtos/promocao_big_combo.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Big Combo Oferta</h3>
-        <p>1 Fun Bacon + 1 Cheddar Bacon + Fritas Tradicional + Coca.</p>
-        <span class="price">R$ 49,90</span>
-      </div>
-      <div class="item-img"><img src="./img/img5/promo3.png" alt="Big Combo"></div>
-    </div>
-  </a>
-
-  <a href="produtos/promocao_3x_fun.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>3 Combos Fun Bacon</h3>
-        <p>3 Hambúrgueres, 3 Fritas pequenas, 3 Refrigerantes.</p>
-        <span class="price">R$ 59,90</span>
-      </div>
-      <div class="item-img"><img src="./img/img5/promo4.png" alt="3 Combos Fun"></div>
-    </div>
-  </a>
-
-  <a href="produtos/promocao_dia_dos_namorados.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Par Perfeito - 2x Combos Fun Bacon</h3>
-        <p>Especial Dia dos Namorados: 2 Hambúrgueres, 2 Fritas, 2 Refri.</p>
-        <span class="price">R$ 40,00</span>
-      </div>
-      <div class="item-img"><img src="./img/img5/promo5.png" alt="Par Perfeito"></div>
-    </div>
-  </a>
-</section>
-
-<section class="item-list" id="adicionais">
-  <h2>ADICIONAIS</h2>
-
-  <a href="produtos/adicional_carne_hamburguer.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Carne Hamburguer.</h3>
-        <span class="price">R$ 5,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad1.png" alt="Carne Hamburguer">
-      </div>
-    </div>
-  </a>
-
-  <a href="produtos/adicional_bacon_crispy.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Bacon Crispy</h3>
-        <span class="price">R$ 5,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad2.png" alt="Bacon Crispy">
-      </div>
-    </div>
-  </a>
-
-  <a href="produtos/adicional_ovo.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Ovo</h3>
-        <span class="price">R$ 3,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad3.png" alt="Ovo">
-      </div>
-    </div>
-  </a>
-
-  <a href="produtos/adicional_calabresa.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Calabresa</h3>
-        <span class="price">R$ 5,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad4.png" alt="Calabresa">
-      </div>
-    </div>
-  </a>
-
-  <a href="produtos/adicional_frango.html" style="text-decoration: none;"> 
-    <div class="item">
-      <div class="item-info">
-        <h3>Frango Empanado</h3>
-        <span class="price">R$ 5,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad5.png" alt="Frango Empanado">
-      </div>
-    </div>
-  </a>
-
-  <a href="produtos/adicional_queijo.html" style="text-decoration: none;">
-    <div class="item">
-      <div class="item-info">
-        <h3>Queijo Fatia</h3>
-        <span class="price">R$ 3,00</span>
-      </div>
-      <div class="item-img">
-        <img src="./img/img6/ad5.png" alt="Queijo Fatia">
-      </div>
-    </div>
-  </a>
-</section>
-
-<script>
-  const sections = document.querySelectorAll("section");
-  const links = document.querySelectorAll(".abas a");
-
-  window.addEventListener("scroll", () => {
-    let currentSection = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (pageYOffset >= sectionTop) {
-        currentSection = section.getAttribute("id");
-      }
-    });
-
-    links.forEach(link => {
-      link.classList.remove("active");
-
-      if (link.getAttribute("href") === "#" + currentSection) {
-        link.classList.add("active");
-
-        // 👇 Aqui é o que você queria: mover a aba horizontalmente
-        link.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest"
-        });
-      }
-    });
-  });
-</script>
-
-<script>
-  // Quando uma aba for clicada
-  document.querySelectorAll('.abas a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    });
-  });
-</script>
-
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const lupa = document.querySelector(".icons img[alt='Buscar']");
-  const searchBox = document.getElementById("searchBox");
-  const input = document.getElementById("searchInput");
-  const results = document.getElementById("searchResults");
-
-  const produtos = [
-    { nome: "Água", arquivo: "produtos/agua.html" },
-    { nome: "Bebida Coca", arquivo: "produtos/bebida_coca.html" },
-    { nome: "Bebida Suco", arquivo: "produtos/bebida_suco.html" },
-    { nome: "Cheddar Bacon Duplo", arquivo: "produtos/cheddar_bacon_duplo.html" },
-    { nome: "Cheddar Duplo Bacon", arquivo: "produtos/cheddar_duplo_bacon.html" },
-    { nome: "Clássico Especial", arquivo: "produtos/classico_especial.html" },
-    { nome: "Combo Cheddar Fun", arquivo: "produtos/combo_cheddar_fun.html" },
-    { nome: "Combo Chesse Fun", arquivo: "produtos/combo_chesse_fun.html" },
-    { nome: "Combo Fun Bacon", arquivo: "produtos/combo_fun_bacon.html" },
-    { nome: "Duplo Bacon", arquivo: "produtos/duplo_bacon.html" },
-    { nome: "Duplo Bacon Combo", arquivo: "produtos/duplo_bacon_combo.html" },
-    { nome: "Duplo Cream Chesse", arquivo: "produtos/duplo_cream_chesse.html" },
-    { nome: "Fritas Bacon Cheddar", arquivo: "produtos/fritas_bacon_cheddar.html" },
-    { nome: "Fritas Bacon Chesse", arquivo: "produtos/fritas_bacon_chesse.html" },
-    { nome: "Fritas Tradicional", arquivo: "produtos/fritas_tradicional.html" },
-    { nome: "Original", arquivo: "produtos/original.html" },
-    { nome: "Refri 1L Coca-Cola", arquivo: "produtos/refri_1l_coca-cola.html" },
-    { nome: "Refri 1L Guaraná", arquivo: "produtos/refri_1l_guarana.html" },
-    { nome: "Refri 1L Retornável", arquivo: "produtos/refri_1l_retornavel.html" },
-    { nome: "Refri Lata Guaraná", arquivo: "produtos/refri_lata_guarana.html" },
-    { nome: "Suco Goiaba", arquivo: "produtos/suco_goiaba.html" },
-    { nome: "Triplo Bacon", arquivo: "produtos/triplo_bacon.html" }
-  ];
-
-  let aberto = false;
-
-  lupa.addEventListener("click", () => {
-    aberto = !aberto;
-    searchBox.style.display = aberto ? "block" : "none";
-    if (aberto) input.focus();
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!searchBox.contains(e.target) && e.target !== lupa) {
-      searchBox.style.display = "none";
-      aberto = false;
+  <style>
+    .carrossel-container {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding: 10px;
     }
-  });
 
-  input.addEventListener("input", () => {
-    const termo = input.value.toLowerCase();
-    results.innerHTML = "";
-    produtos.forEach(p => {
-      if (p.nome.toLowerCase().includes(termo)) {
-        const li = document.createElement("li");
-        li.textContent = p.nome;
-        li.onclick = () => window.location.href = p.arquivo;
-        results.appendChild(li);
+    .carrossel-container h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .carrossel {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .carrossel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card-produto {
+      flex: 0 0 auto;
+      width: 130px;
+      border-radius: 10px;
+      background: #f2f2f2;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 5px;
+      text-align: center;
+      
+    }
+
+    .card-produto img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card-produto span {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+      color: black;
+    }
+
+  </style>
+
+  <h2 class="essa">Combo = Burger + Fritas + Bebidas</h2>
+  </section>
+  <section class="item-list" id="combo">
+    <a href="produtos/combo_fun_bacon.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Combo Bolota Fun Bacon</h3>
+          <p>1 hambúrguer, queijo alface, tomate, bacon, maionese grill.</p>
+          <span class="price">R$ 23,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han1.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/combo_cheddar_fun.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Combo Cheddar Fun Bacon</h3>
+          <p>1 hambúrguer, cheddar cremoso, bacon, alface e tomate, maionese grill.</p>
+          <span class="price">R$ 23,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han2.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/combo_chesse_fun.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Combo Chesse Fun Bacon</h3>
+          <p>1 hambúrguer, cream cheese, bacon, alface e tomate e maionese grill.</p>
+          <span class="price">R$ 23,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han3.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Duplo Cream Chesse combo</h3>
+          <p>2 carnes, bacon crispy, cream chesse, molho chipotle e pão brioche.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han4.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/cheddar_bacon_duplo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Cheddar bacon duplo combo</h3>
+          <p>O hambúrguer duplo mais vendido da casa, com 2 blends de 100g cada cobertos por cream cheddar e fatias de
+            bacon defumado e maionese especial.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han5.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Duplo Bacon Combo</h3>
+          <p>Burger Duplo: apenas 2 blend de 100g queijo, fatias de bacon maionese especial e maionese grill.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han6.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Triplo Bacon Combo</h3>
+          <p>O mais incrivel dos hamburguer: 3 blends de 100g cada com fatias de queijo mozarela...</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han7.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Frango Chesse combo</h3>
+          <p>Frango Empanado, cream chesse, bacon, alface, tomate e maionese grill.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han8.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Original Combo</h3>
+          <p>1 hamburguer, queijo, ovo, calabresa, maionese grill e pão brioche.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han9.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>clássico especial combo</h3>
+          <p>1 carne, queijo, ovo, maionese grill, salada e pão brioche.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han10.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>BOLOTINHA COMBO</h3>
+          <p>1 hamburguer, queijo, ovo e maionese grill.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han11.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Banana fun bacom combo.</h3>
+          <p>Chegou Banana fun bacom. 1 hamburguer bovino, bacon, banana da terra, alface e...</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han12.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHICKEN BACON COMBO.</h3>
+          <p>SANDUICHE DE FRANGO EMPANADO COM, BACON, QUEIJO, SALADA, MAIONESE GRILL.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han13.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHICKEN CHEADER COMBO.</h3>
+          <p>SANDUICHE DE FRANGO EMPANADO, CHEADER CREMOSO, BACON, SALADA...</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han14.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>BIG BOLOTA COMBO.</h3>
+          <p>2 carnees, queijo, ovo, bacon, alface, tomate e maionese grill.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han15.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/duplo_bacon_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>SEXTOU DUPLO.2 X DUPLOS BACON.</h3>
+          <p>1 X COMBO CHEADER DUPLO.<br>1X COMBO DUPLO BACO.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img1/han16.png" /></div>
+      </div>
+    </a>
+  </section>
+  <section class="item-list" id="hamburguer">
+    <h2>HAMBURGER</h2>
+    <a href="produtos/cheddar_duplo_bacon.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Cheddar Duplo Bacon</h3>
+          <p>2 CARNES, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+          <span class="price">R$ 20,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu1.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/duplo_bacon.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Duplo Bacon</h3>
+          <p>2 CARNES, BACON CRISPY, QUEIJO, MOLHO CHIPOTLE E PÃO BRIOCHE</p>
+          <span class="price">R$ 20,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu2.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/duplo_cream_chesse.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Duplo Cream Chesse</h3>
+          <p>2 CARENES, BACON CRISPY, CREAM CHESSE, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+          <span class="price">R$ 20,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu3.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/triplo_bacon.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Triplo Bacon</h3>
+          <p>3 CARNES, BACON CRISPY, MOOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+          <span class="price">R$ 23,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu4.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/classico_especial.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Classico Especial</h3>
+          <p>1 hambúrguer, ovo, queijo, alface e tomate, maionese grill.</p>
+          <span class="price">R$ 15,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu5.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Original</h3>
+          <p>1 CARNE, QUEIJO, OVO, CALABRESA, MOLHO CHIPOTLE E PÃO BRIOCHE.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu6.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHICKEN BACON CHEESE</h3>
+          <p>FRANGO EMPANADO, CREAM CHESSE, BACON, SALADA E MAIONESE GRILL.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu7.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>BOLOTA FUN BACON</h3>
+          <p>1 CARNE, BACON CRISPY, QUEIJO, SALADA MOLHO CHIPOTLE E PÃO BRIOCHE</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu8.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHEDDAR FUN BACON</h3>
+          <p>1 CARNE, BACON CRISPY, CHEDDAR CREMOSO, MOLHO CHIPOTLE, SALADA E...</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu9.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHESSE FUN BACON</h3>
+          <p>1 CARNE, BACON CRISPY, CREAM CHESSE, MOLHO CHIPOTLE, SALADA E PÃO BRIOCHE.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu10.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>BOLOTINHA</h3>
+          <p>1 CARNE, QUEIJO, MOLHO CHIPOTLE, PÃO BRIOCHE.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu11.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Banana fun bacon.</h3>
+          <p>1 hamburger bovino, bacon, banana da terra, alface e tomate e molho chipotle.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu12.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHICKEN BACON.</h3>
+          <p>SANDUICHE DE FRANGO EMPANADO, COM, BACON, QUEIJO, SALADA E MAIONESSE...</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu13.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>CHICKEN CHEDDAR BACON.</h3>
+          <p>FRANGO EMPANDO, CHEDDAR CREMOSO, BACON, SALADA E MAIONESSE GRILL.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu14.png" /></div>
+      </div>
+    </a>
+
+    <a href="produtos/original.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>BIG BOLOTA</h3>
+          <p>2 carnes, queijo, ovo, bacon, alface e tomate, maionese grill.</p>
+          <span class="price">R$ 16,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img2/hanbu15.png" /></div>
+      </div>
+    </a>
+  </section>
+  <section class="item-list" id="fritas">
+    <h2>FRITA´S</h2>
+    <a href="produtos/fritas_bacon_cheddar.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Fritas Bacon Cheddar</h3>
+          <p>BATATA, CHEDDAR CREMOSO, BACON CRISPY. porção serve até 3 pessoas</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img3/frita1.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/fritas_bacon_chesse.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Fritas Bacon Chesse</h3>
+          <p>BATATA, CREAM CHESSE, BACON CRISPY. serve até 3 pessoas.</p>
+          <span class="price">R$ 25,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img3/frita2.png" /></div>
+      </div>
+    </a>
+    <a href="produtos/fritas_tradicional.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Fritas Tradicional</h3>
+          <p>BATATA FRITA.</p>
+          <span class="price">R$ 15,00</span>
+        </div>
+        <div class="item-img"><img alt="" src="./img/img3/frita3.png" /></div>
+      </div>
+    </a>
+  </section>
+  <section class="item-list" id="bebidas">
+    <h2>BEBIDAS</h2>
+
+    <a href="produtos/refri_lata_guarana.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Refri Lata Guaraná</h3>
+          <p>Guaraná Antarctica em lata</p>
+          <span class="price">R$ 4,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re1.png" alt="Guaraná lata"></div>
+      </div>
+    </a>
+
+    <a href="produtos/agua.html">
+      <div class="item">
+        <div class="item-info">
+          <h3>Água</h3>
+          <p>Água mineral sem gás</p>
+          <span class="price">R$ 3,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re2.png" alt="Água"></div>
+      </div>
+    </a>
+
+    <a href="produtos/suco_goiaba.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Suco Goiaba</h3>
+          <p>Suco natural de goiaba</p>
+          <span class="price">R$ 5,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re3.png" alt="Suco Goiaba"></div>
+      </div>
+    </a>
+
+    <a href="produtos/refri_1l_guarana.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Refri 1L Guaraná</h3>
+          <p>Guaraná Antarctica 1 Litro</p>
+          <span class="price">R$ 7,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re4.png" alt="Guaraná 1L"></div>
+      </div>
+    </a>
+
+    <a href="produtos/refri_1l_coca-cola.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Refri 1,5L Coca-Cola</h3>
+          <p>Refrigerante Coca-Cola 1,5 Litro</p>
+          <span class="price">R$ 10,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re5.png" alt="Coca 1,5L"></div>
+      </div>
+    </a>
+
+    <a href="produtos/refri_1l_retornavel.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Refri Coca 1L Retornável</h3>
+          <p>Coca-Cola retornável</p>
+          <span class="price">R$ 8,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img4/re6.png" alt="Coca Retornável"></div>
+      </div>
+    </a>
+  </section>
+
+  <section class="item-list" id="promocoes">
+    <h2>PROMOÇÕES <span style="color: red;">%</span></h2>
+
+    <a href="produtos/promocao_3x_classicos.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>3x Clássicos Combos</h3>
+          <p>3 Combos clássicos com hambúrgueres incríveis.</p>
+          <span class="price">R$ 50,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img5/promo1.png" alt="3x Clássicos"></div>
+      </div>
+    </a>
+
+    <a href="produtos/promocao_fun_cheddar.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>2 Hambúrgueres Fun Bacon e Cheddar Bacon + Coca 600ml</h3>
+          <p>1 Fun Bacon e 1 Cheddar Bacon com Coca 600ml.</p>
+          <span class="price">R$ 30,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img5/promo2.png" alt="Fun + Cheddar + Coca"></div>
+      </div>
+    </a>
+
+    <a href="produtos/promocao_big_combo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Big Combo Oferta</h3>
+          <p>1 Fun Bacon + 1 Cheddar Bacon + Fritas Tradicional + Coca.</p>
+          <span class="price">R$ 49,90</span>
+        </div>
+        <div class="item-img"><img src="./img/img5/promo3.png" alt="Big Combo"></div>
+      </div>
+    </a>
+
+    <a href="produtos/promocao_3x_fun.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>3 Combos Fun Bacon</h3>
+          <p>3 Hambúrgueres, 3 Fritas pequenas, 3 Refrigerantes.</p>
+          <span class="price">R$ 59,90</span>
+        </div>
+        <div class="item-img"><img src="./img/img5/promo4.png" alt="3 Combos Fun"></div>
+      </div>
+    </a>
+
+    <a href="produtos/promocao_dia_dos_namorados.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Par Perfeito - 2x Combos Fun Bacon</h3>
+          <p>Especial Dia dos Namorados: 2 Hambúrgueres, 2 Fritas, 2 Refri.</p>
+          <span class="price">R$ 40,00</span>
+        </div>
+        <div class="item-img"><img src="./img/img5/promo5.png" alt="Par Perfeito"></div>
+      </div>
+    </a>
+  </section>
+
+  <section class="item-list" id="adicionais">
+    <h2>ADICIONAIS</h2>
+
+    <a href="produtos/adicional_carne_hamburguer.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Carne Hamburguer.</h3>
+          <span class="price">R$ 5,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad1.png" alt="Carne Hamburguer">
+        </div>
+      </div>
+    </a>
+
+    <a href="produtos/adicional_bacon_crispy.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Bacon Crispy</h3>
+          <span class="price">R$ 5,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad2.png" alt="Bacon Crispy">
+        </div>
+      </div>
+    </a>
+
+    <a href="produtos/adicional_ovo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Ovo</h3>
+          <span class="price">R$ 3,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad3.png" alt="Ovo">
+        </div>
+      </div>
+    </a>
+
+    <a href="produtos/adicional_calabresa.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Calabresa</h3>
+          <span class="price">R$ 5,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad4.png" alt="Calabresa">
+        </div>
+      </div>
+    </a>
+
+    <a href="produtos/adicional_frango.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Frango Empanado</h3>
+          <span class="price">R$ 5,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad5.png" alt="Frango Empanado">
+        </div>
+      </div>
+    </a>
+
+    <a href="produtos/adicional_queijo.html" style="text-decoration: none;">
+      <div class="item">
+        <div class="item-info">
+          <h3>Queijo Fatia</h3>
+          <span class="price">R$ 3,00</span>
+        </div>
+        <div class="item-img">
+          <img src="./img/img6/ad5.png" alt="Queijo Fatia">
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".abas a");
+
+    window.addEventListener("scroll", () => {
+      let currentSection = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      links.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + currentSection) {
+          link.classList.add("active");
+
+          // 👇 Aqui é o que você queria: mover a aba horizontalmente
+          link.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+          });
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Quando uma aba for clicada
+    document.querySelectorAll('.abas a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+  </script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const lupa = document.querySelector(".icons img[alt='Buscar']");
+      const searchBox = document.getElementById("searchBox");
+      const input = document.getElementById("searchInput");
+      const results = document.getElementById("searchResults");
+
+      const produtos = [
+        { nome: "Água", arquivo: "produtos/agua.html" },
+        { nome: "Bebida Coca", arquivo: "produtos/bebida_coca.html" },
+        { nome: "Bebida Suco", arquivo: "produtos/bebida_suco.html" },
+        { nome: "Cheddar Bacon Duplo", arquivo: "produtos/cheddar_bacon_duplo.html" },
+        { nome: "Cheddar Duplo Bacon", arquivo: "produtos/cheddar_duplo_bacon.html" },
+        { nome: "Clássico Especial", arquivo: "produtos/classico_especial.html" },
+        { nome: "Combo Cheddar Fun", arquivo: "produtos/combo_cheddar_fun.html" },
+        { nome: "Combo Chesse Fun", arquivo: "produtos/combo_chesse_fun.html" },
+        { nome: "Combo Fun Bacon", arquivo: "produtos/combo_fun_bacon.html" },
+        { nome: "Duplo Bacon", arquivo: "produtos/duplo_bacon.html" },
+        { nome: "Duplo Bacon Combo", arquivo: "produtos/duplo_bacon_combo.html" },
+        { nome: "Duplo Cream Chesse", arquivo: "produtos/duplo_cream_chesse.html" },
+        { nome: "Fritas Bacon Cheddar", arquivo: "produtos/fritas_bacon_cheddar.html" },
+        { nome: "Fritas Bacon Chesse", arquivo: "produtos/fritas_bacon_chesse.html" },
+        { nome: "Fritas Tradicional", arquivo: "produtos/fritas_tradicional.html" },
+        { nome: "Original", arquivo: "produtos/original.html" },
+        { nome: "Refri 1L Coca-Cola", arquivo: "produtos/refri_1l_coca-cola.html" },
+        { nome: "Refri 1L Guaraná", arquivo: "produtos/refri_1l_guarana.html" },
+        { nome: "Refri 1L Retornável", arquivo: "produtos/refri_1l_retornavel.html" },
+        { nome: "Refri Lata Guaraná", arquivo: "produtos/refri_lata_guarana.html" },
+        { nome: "Suco Goiaba", arquivo: "produtos/suco_goiaba.html" },
+        { nome: "Triplo Bacon", arquivo: "produtos/triplo_bacon.html" }
+      ];
+
+      let aberto = false;
+
+      lupa.addEventListener("click", () => {
+        aberto = !aberto;
+        searchBox.style.display = aberto ? "block" : "none";
+        if (aberto) input.focus();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!searchBox.contains(e.target) && e.target !== lupa) {
+          searchBox.style.display = "none";
+          aberto = false;
+        }
+      });
+
+      input.addEventListener("input", () => {
+        const termo = input.value.toLowerCase();
+        results.innerHTML = "";
+        produtos.forEach(p => {
+          if (p.nome.toLowerCase().includes(termo)) {
+            const li = document.createElement("li");
+            li.textContent = p.nome;
+            li.onclick = () => window.location.href = p.arquivo;
+            results.appendChild(li);
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    const botaoCompartilhar = document.getElementById("compartilharicone");
+
+    botaoCompartilhar.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Bolota Burger 🍔",
+            text: "Faça seu pedido agora no Bolota Burger!",
+            url: "https://rgewtgetbvdfas.github.io/bolota/"
+          });
+        } catch (erro) {
+          console.error("Erro ao compartilhar:", erro);
+        }
+      } else {
+        alert("Seu navegador não suporta compartilhamento automático.");
       }
     });
-  });
-});
-</script>
+  </script>
 
-<script>
-  const botaoCompartilhar = document.getElementById("compartilharicone");
 
-  botaoCompartilhar.addEventListener("click", async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "Bolota Burger 🍔",
-          text: "Faça seu pedido agora no Bolota Burger!",
-          url: "https://rgewtgetbvdfas.github.io/bolota/"
-        });
-      } catch (erro) {
-        console.error("Erro ao compartilhar:", erro);
-      }
-    } else {
-      alert("Seu navegador não suporta compartilhamento automático.");
-    }
-  });
-</script>
-    
-
-<footer style="position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #ccc; display: flex; justify-content: space-around; padding: 8px 0;">
-  <a href="./index.html" style="text-align: center; color: red;">
-    <div>🏠</div>
-    <small>Início</small>
-  </a>
-  <a href="./produtos/produtos.html" style="text-align: center; color: gray;">
-    <div>📄</div>
-    <small>Pedidos</small>
-  </a>
-  <a href="./produtos/carrinho.html" style="text-align: center; color: gray;">
-    <div>🛒</div>
-    <small>Carrinho</small>
-  </a>
-</footer>
+  <footer
+    style="position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #ccc; display: flex; justify-content: space-around; padding: 8px 0;">
+    <a href="./index.html" style="text-align: center; color: red;">
+      <div>🏠</div>
+      <small>Início</small>
+    </a>
+    <a href="./produtos/produtos.html" style="text-align: center; color: gray;">
+      <div>📄</div>
+      <small>Pedidos</small>
+    </a>
+    <a href="./produtos/carrinho.html" style="text-align: center; color: gray;">
+      <div>🛒</div>
+      <small>Carrinho</small>
+    </a>
+  </footer>
 
 </body>
-    
+
 </html>
